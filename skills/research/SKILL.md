@@ -261,7 +261,7 @@ confidential: true
 
 ---
 
-## Step 6: Offer follow-up actions
+## Step 6: Offer follow-up actions and recommendations
 
 After producing output, offer:
 1. **Save to Brain** — write gap analysis to `wiki/compliance/research-compliance-gap-YYYY-MM-DD.md`

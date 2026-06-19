@@ -14,6 +14,16 @@ The Brain is a personal knowledge system organized as three specialized sub-brai
 
 **`planner/` — The Executive Assistant.** Day-to-day operations organized in a date hierarchy (`planner/YYYY/MM/YYYY-MM-DD.md`). Each daily file serves as both a prospective plan (schedule, priorities, talking points) and a retrospective activity log (`/compliance-brain:log` appends throughout the day). Also holds the dashboard, weekly reflections, and task lists. Executive function — reads from the other two sub-brains and from connectors, produces actionable output.
 
+**`investigations/` — The Case Manager.** Confidential compliance matter register. Active and closed investigations: Title IX cases, research misconduct inquiries, HIPAA breaches, employee complaints, and voluntary self-disclosures. Each matter has required process deadlines, regulatory timelines, and a chronological log. **RESTRICTED** — never reference case details from wiki or pm pages. Dashboard references to "N active matters" are acceptable; full case details stay here.
+
+**`evidence/` — The Audit Locker.** Compliance evidence catalog. Indexes where audit-ready artifacts live — policy documents, training completion logs, submission confirmations, meeting minutes, system screenshots, signed agreements. Does not store the documents themselves; stores the index with enough metadata to retrieve any artifact instantly. Organized by compliance domain and audit cycle. Feeds directly into accreditation packages and regulatory responses.
+
+**`counsel/` — The Legal Library.** Confidential legal reference library. Legal memoranda, regulatory interpretations, attorney general opinions, outside counsel correspondence, resolution agreement analyses, and external legal matter management. **May contain attorney-client privileged materials** — privilege tags are set per-document. Never summarize privileged content in shared-facing outputs.
+
+**`intel/` — The Intelligence Feed.** Curated regulatory and peer intelligence clipping library. Enforcement actions at peer institutions, agency press releases, Federal Register developments, Congressional activity, accreditor announcements, and notable peer institution compliance failures. Distinct from `wiki/compliance/reg-monitor/` (which stores reg-monitor scan outputs) — intel is the ongoing clipping file where the VP manually files notable items for pattern tracking.
+
+**`engineer/` — The Expert Software Engineer.** Development and deployment of basic apps designed to help collect and store information pertaining to compliance. Each form, questionnaire, or app has detailed requirements and a finished HTML file that can be hosted somewhere. Holds information pertaining to anything that needs to be built.
+
 ### Layers
 
 **Memory** — the three sub-brains above. Each maintains its own pages, indexes, and internal structure. Cross-references between sub-brains are where the real intelligence lives.
@@ -46,6 +56,10 @@ Follow this sequence. Navigate like a tree search — top-down, skipping irrelev
 4. **For project questions**: go straight to `pm/index.md`, find the project's section (which groups the project page, all its meetings, and all its notes together).
 5. **For current state**: read `log.md` (recent operations) and `planner/dashboard.md` (current priorities).
 6. **To trace a claim to its source**: follow the inline `[[wikilink#heading]]` to the specific section, then follow `raw_source` frontmatter or `Source: [[raw/filename]]` to the raw file. Two clicks max from any claim to primary source.
+7. **For compliance matters (investigations)**: go to `investigations/index.md`. Case detail stays in `investigations/` — never reference case specifics from wiki or pm.
+8. **For audit evidence**: go to `evidence/index.md` to find what's been collected and where it lives.
+9. **For legal analysis**: go to `counsel/index.md`. Check privilege tags before including any content in shared outputs.
+10. **For enforcement precedents and regulatory signals**: go to `intel/index.md` and search by topic or domain.
 
 ---
 
@@ -352,6 +366,13 @@ All skills ship with the **the-brain plugin** and are invoked as `/compliance-br
 | `/compliance-brain:standup` | Standup summary: yesterday, today, blockers. Formatted for Slack or reading aloud. |
 | `/compliance-brain:prep` | Meeting prep briefing: project state, recent changes, talking points. |
 | `/compliance-brain:log` | Activity log: update today's daily file with what you worked on. Reads conversation context. |
+| `/compliance-brain:investigate` | Compliance investigation and case management. Opens, tracks, and closes compliance matters (Title IX, research misconduct, HIPAA breach, etc.). Maintains confidential case register with required process deadlines. |
+| `/compliance-brain:evidence` | Compliance evidence locker. Catalogs, collects, and packages audit evidence artifacts by domain and cycle. Produces evidence gap analyses and audit packages. |
+| `/compliance-brain:counsel` | Legal research and counsel library. Files and retrieves legal memos, regulatory interpretations, outside counsel correspondence, and resolution agreements. Manages external legal matters. |
+| `/compliance-brain:intel` | Regulatory and peer intelligence feed. Files and retrieves enforcement actions, regulatory developments, and peer institution news. Produces pattern-based intelligence alerts. |
+| `/compliance-brain:dashboard` | Compliance program dashboard. Single-pane view of risk posture, deadlines, project status, training, audit standing, active investigations. |
+| `/compliance-brain:timeline` | Compliance roadmap and Gantt view. Text-based timeline of projects, accreditation cycles, and regulatory deadlines with capacity analysis. |
+| `/compliance-brain:remind` | Deadline reminder management. Creates tiered reminder task chains in the planner. Modes: check, set, digest, clear. |
 
 ---
 

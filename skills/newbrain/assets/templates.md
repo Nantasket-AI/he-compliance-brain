@@ -502,3 +502,216 @@ What this meeting is about, pulled from [[pm/projects/project-name]] and recent 
 - Current Jira sprint status (from connector)
 - Recent PRs/commits (from connector)
 ```
+
+---
+
+## Investigations: Case File
+
+**Location**: `investigations/active/INV-NNN.md` (move to `investigations/closed/YYYY/INV-NNN.md` on close)
+
+```markdown
+---
+case_id: INV-NNN
+type: title-ix | research-misconduct | hipaa-breach | employee-complaint | self-disclosure | other
+opened: YYYY-MM-DD
+status: inquiry | investigation | resolution | closed
+confidentiality: restricted | confidential | internal
+complainant_role: "[role — no individual name]"
+respondent_role: "[role — no individual name]"
+assigned_to: "[role]"
+oversight: VP of Compliance
+regulatory_basis: "[regulation]"
+deadline_at_risk: false
+outcome: pending
+related_risks: []
+related_projects: []
+---
+
+# INV-NNN — [Brief Matter Title]
+
+**CONFIDENTIAL** | **Type**: [type] | **Opened**: YYYY-MM-DD | **Status**: [status]
+
+## Required Process Steps and Deadlines
+
+| # | Step | Regulatory Basis | Deadline | Status | Completed |
+|---|------|-----------------|----------|--------|-----------|
+| 1 | [step] | [citation] | YYYY-MM-DD | ⏳ Pending | — |
+
+## 🔴 Immediate Obligations
+
+[Steps due within 10 business days]
+
+## Key Dates
+
+| Date | Event |
+|------|-------|
+| YYYY-MM-DD | Allegation/complaint/discovery |
+| YYYY-MM-DD | Matter opened |
+
+## Matter Description
+
+[Non-identifying description]
+
+## Assigned Personnel
+
+- **Investigator/Handler**: [role]
+- **Decision-Maker**: [role]
+- **General Counsel notified**: Yes/No — [date]
+- **External counsel**: Yes/No
+
+## Evidence and Documentation
+
+[SharePoint or secure location links — no verbatim documents here]
+
+## Notes
+
+[Chronological developments]
+```
+
+---
+
+## Evidence: Artifact Entry
+
+**Location**: `evidence/index.md` (master catalog) and `evidence/YYYY/[domain]-artifacts.md`
+
+```markdown
+---
+evidence_id: EV-NNN
+domain: REG | ACCRED | CLINICAL | RESEARCH | PRIVACY | HR | GOV | FINANCE
+requirement: "[requirement name]"
+requirement_citation: "[specific citation]"
+artifact_type: POLICY | TRAINING | SUBMISSION | REPORT | MEETING-MINS | AGREEMENT | DISCLOSURE | SCREENSHOT | ACCESS-REVIEW | ATTESTATION | CORRESPONDENCE | PROCEDURE | DATA
+collected_by: "[role]"
+collected_date: YYYY-MM-DD
+valid_through: YYYY-MM-DD
+audit_cycles: []
+sufficiency: Strong | Adequate | Weak | Missing
+---
+
+# EV-NNN — [Requirement Name]
+
+**Domain**: [domain] | **Type**: [artifact type] | **Valid Through**: YYYY-MM-DD
+
+## What This Proves
+
+[What compliance obligation this evidence satisfies — one paragraph]
+
+## Location
+
+[SharePoint URL, portal link, or system path where the full artifact lives]
+[Include: filename, folder path, version/date if applicable]
+
+## Sufficiency Assessment
+
+**Rating**: Strong / Adequate / Weak
+**Basis**: [why this rating — what the artifact shows and any gaps]
+
+## Notes
+
+[Any caveats, upcoming refresh needed, auditor caveats]
+
+## Related
+
+- Satisfies: [[wiki/compliance/risk-register]] — [control reference]
+- Audit cycles: [list]
+```
+
+---
+
+## Counsel: Library Entry
+
+**Location**: `counsel/memos/LGL-NNN.md`, `counsel/opinions/LGL-NNN.md`, etc.
+
+```markdown
+---
+doc_id: LGL-NNN
+type: MEMO | OPINION | GUIDANCE | CORRESPONDENCE | RESOLUTION | ANALYSIS | MATTER | TEMPLATE
+title: "[Descriptive title]"
+date: YYYY-MM-DD
+author: "[Author or issuing body]"
+topics: []
+domains: []
+privilege: none | attorney-client | work-product | deliberative-process
+regulations_cited: []
+expires: YYYY-MM-DD
+related_matters: []
+related_risks: []
+---
+
+# LGL-NNN — [Title]
+
+**Author**: [author] | **Date**: YYYY-MM-DD | **Type**: [type]
+**Privilege**: [privilege status]
+
+**Location**: [SharePoint or secure system path to full document]
+
+## Summary
+
+[Non-privileged 2-3 sentence description of what this document covers]
+
+## Key Conclusions
+
+[If not privileged — bullet list of key legal conclusions]
+[If privileged — redact or omit]
+
+## Institutional Implications
+
+[What this means for this institution's compliance program]
+
+## Related Pages
+
+- [[wiki/compliance/risk-register]] — [affected risk]
+- [[counsel/matters/]] — [related matter if any]
+```
+
+---
+
+## Intel: Intelligence Item
+
+**Location**: `intel/enforcement/INTEL-NNN.md`, `intel/regulatory/INTEL-NNN.md`, or `intel/peer/INTEL-NNN.md`
+
+```markdown
+---
+item_id: INTEL-NNN
+type: ENFORCEMENT | FINAL-RULE | PROPOSED-RULE | GUIDANCE | PEER-ACTION | CONGRESSIONAL | ACCREDITOR | COURT | OIG-ADVISORY | SELF-DISCLOSURE | WHISTLEBLOWER
+date: YYYY-MM-DD
+filed_date: YYYY-MM-DD
+agency: "[agency name]"
+institution: "[peer institution name, if applicable]"
+title: "[Short descriptive title]"
+source_url: "[URL to primary source]"
+domains: []
+topics: []
+relevance: "🔴 High | 🟡 Medium | 🟢 Low"
+action_required: false
+related_risks: []
+related_counsel: []
+---
+
+# INTEL-NNN — [Title]
+
+**Type**: [type] | **Agency/Source**: [agency] | **Date**: YYYY-MM-DD
+**Relevance**: [relevance] | **Source**: [source_url]
+
+## What Happened
+
+[2-3 sentence plain-language description of the event]
+
+## Signal
+
+[What this tells us about enforcement priorities or regulatory direction — this is the key field]
+
+## Institutional Implications
+
+[What this means specifically for this institution — gaps revealed, required self-assessments, policy implications]
+
+## Action Items
+
+[If action_required: specific actions with owners and deadlines]
+[If not: "Monitor — no immediate action required."]
+
+## Related
+
+- [[wiki/compliance/risk-register]] — [risk updated by this intel]
+- [[counsel/]] — [related legal library entry if applicable]
+```

@@ -42,6 +42,10 @@ wiki/concepts/
 wiki/entities/
 wiki/sources/
 wiki/analysis/
+wiki/compliance/
+wiki/compliance/reg-monitor/
+wiki/compliance/dashboards/
+wiki/compliance/timelines/
 pm/projects/
 pm/meetings/
 pm/notes/
@@ -49,6 +53,18 @@ pm/prep/
 pm/reports/
 planner/
 raw/
+investigations/active/
+investigations/closed/
+evidence/audits/
+counsel/memos/
+counsel/opinions/
+counsel/guidance/
+counsel/matters/
+counsel/agreements/
+counsel/templates/
+intel/enforcement/
+intel/regulatory/
+intel/peer/
 ```
 
 ---
@@ -352,6 +368,196 @@ updated: YYYY-MM-DD
 *No goals set yet. Add your quarterly or monthly goals here.*
 ```
 
+### `investigations/index.md`
+
+```markdown
+---
+title: Investigations Index
+type: index
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [investigations, index]
+---
+
+# Investigations Index
+
+**CONFIDENTIAL — RESTRICTED ACCESS**
+
+## Active Matters
+
+*No active matters.*
+
+## Closed Matters
+
+*No closed matters.*
+```
+
+### `investigations/overview.md`
+
+```markdown
+---
+title: Investigations Overview
+type: overview
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [investigations, overview]
+---
+
+# Investigations Overview
+
+**CONFIDENTIAL — RESTRICTED ACCESS**
+
+## Current Status
+
+No active compliance matters.
+
+## Summary Statistics
+
+- Active matters: 0
+- Matters opened this year: 0
+- Matters closed this year: 0
+```
+
+### `evidence/index.md`
+
+```markdown
+---
+title: Evidence Locker Index
+type: index
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [evidence, index]
+---
+
+# Compliance Evidence Locker
+
+## Coverage Summary
+
+*No evidence artifacts cataloged yet. Use `/compliance-brain:evidence collect` to file the first artifact.*
+
+## By Domain
+
+*No evidence filed.*
+```
+
+### `evidence/overview.md`
+
+```markdown
+---
+title: Evidence Locker Overview
+type: overview
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [evidence, overview]
+---
+
+# Compliance Evidence Locker — Overview
+
+## Current Status
+
+The evidence locker is empty. Use `/compliance-brain:evidence collect` to begin cataloging compliance artifacts.
+
+## Audit Readiness
+
+Not yet assessed — no artifacts filed.
+```
+
+### `counsel/index.md`
+
+```markdown
+---
+title: Counsel Library Index
+type: index
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [counsel, index]
+---
+
+# Legal Reference Library
+
+**CONFIDENTIAL — May contain attorney-client privileged materials**
+
+## By Topic
+
+*No documents filed yet. Use `/compliance-brain:counsel file` to add the first document.*
+
+## Active External Matters
+
+*No active external matters.*
+```
+
+### `counsel/overview.md`
+
+```markdown
+---
+title: Counsel Library Overview
+type: overview
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [counsel, overview]
+---
+
+# Legal Reference Library — Overview
+
+**CONFIDENTIAL — May contain attorney-client privileged materials**
+
+## Current Legal Landscape
+
+The counsel library is empty. File legal memos, regulatory guidance analyses, and resolution agreements using `/compliance-brain:counsel file`.
+
+## Active External Matters
+
+None.
+```
+
+### `intel/index.md`
+
+```markdown
+---
+title: Intelligence Library Index
+type: index
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [intel, index]
+---
+
+# Regulatory & Peer Intelligence Library
+
+## Feed (Newest First)
+
+*No intelligence items filed yet. Use `/compliance-brain:intel file` to add the first item.*
+
+## By Domain
+
+*No items.*
+
+## By Type
+
+*No items.*
+```
+
+### `intel/overview.md`
+
+```markdown
+---
+title: Intelligence Library Overview
+type: overview
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [intel, overview]
+---
+
+# Regulatory & Peer Intelligence Library — Overview
+
+## Current Intelligence Landscape
+
+The intelligence library is empty. File enforcement actions, regulatory developments, and peer institution news using `/compliance-brain:intel file`.
+
+## Active Pattern Alerts
+
+None.
+```
+
 ### `log.md` (in Brain root)
 
 ```markdown
@@ -361,7 +567,7 @@ Chronological record of operations that change the Brain.
 Format: `## [YYYY-MM-DD] verb | Subject`
 
 ## [YYYY-MM-DD] system | Brain bootstrapped
-Fresh Brain scaffolded via /compliance-brain:newbrain. Sub-brains: wiki, pm, planner. Schema and templates installed from plugin. Ready for first ingest.
+Fresh Brain scaffolded via /compliance-brain:newbrain. Sub-brains: wiki, pm, planner, investigations, evidence, counsel, intel. Schema and templates installed from plugin. Ready for first ingest.
 ```
 
 ---

@@ -36,10 +36,14 @@ Apply the same comparison to `templates.md` (also installed from `${CLAUDE_PLUGI
 
 ### 1. Index integrity
 
-For each sub-brain (wiki/, pm/, planner/):
+For each sub-brain (wiki/, pm/, planner/, investigations/, evidence/, counsel/, intel/):
 - List all `.md` files in the sub-brain directories
   - For planner: scan `planner/YYYY/MM/` directories for daily files (YYYY-MM-DD.md) and weekly files (week-WW.md)
   - For pm: include `pm/prep/` in the scan scope alongside `pm/projects/`, `pm/meetings/`, `pm/notes/`
+  - For investigations: scan `investigations/active/` and `investigations/closed/YYYY/`
+  - For evidence: scan `evidence/audits/` and any cycle year directories
+  - For counsel: scan `counsel/memos/`, `counsel/opinions/`, `counsel/guidance/`, `counsel/matters/`, `counsel/agreements/`
+  - For intel: scan `intel/enforcement/`, `intel/regulatory/`, `intel/peer/`
 - Read the sub-brain's `index.md`
 - Flag any pages that exist on disk but are missing from the index
 - Flag any index entries that reference pages that don't exist

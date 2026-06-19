@@ -46,7 +46,7 @@ Note any Brain gaps — areas where the institutional baseline is simply not doc
 
 ## Step 3: Review Track A — Grammar & Mechanics
 
-Perform a thorough line-by-line grammar and mechanics pass. Flag every instance of:
+Perform a thorough line-by-line grammar and mechanics pass in English. Flag every instance of:
 
 | Category | What to Check |
 |----------|--------------|
@@ -63,6 +63,14 @@ For each finding, record:
 - **Issue type**: spelling / grammar / punctuation / capitalization / number style / structure / word choice
 - **Severity**: `Minor` (style preference) or `Error` (clearly wrong)
 - **Suggested fix**: the corrected text
+
+Ask the user to confirm any ambiguous cases (e.g., "In the sentence 'Our MD program is very competitive,' did you intend to use 'very' as an intensifier, or is this a placeholder for a specific claim about competitiveness? If the latter, please clarify the intended claim so I can suggest compliant language.")
+
+Ask the user to confirm the intended audience if it is not clear from the content, as this will affect tone and word choice recommendations in later tracks.
+
+Ask the user if they want all grammar/mechanics issues flagged, or only `Error`-level issues, as some style preferences may be subjective and not worth flagging in a `quick` review mode.
+
+Ask the user if they want a review of inclusive language and bias — this can be a separate pass focused on identifying potentially non-inclusive or biased language, with suggestions for more inclusive alternatives. This is especially important for patient-facing and student-facing materials.
 
 ---
 
