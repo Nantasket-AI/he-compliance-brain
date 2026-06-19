@@ -1,0 +1,12 @@
+{
+  "name": "compliance-brain",
+  "owner": { "name": "Dr. Rich Huebner", "email": "rich.huebner@nantasket.ai" },
+  "description": "Marketplace for HE-Compliance plugin — a personal knowledge management plugin for compliance teams in higher education.",
+  "plugins": [
+    {
+      "name": "he-compliance",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

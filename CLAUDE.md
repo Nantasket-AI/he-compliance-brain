@@ -1,39 +1,60 @@
 # HE Compliance Brain
 
-A second brain and personal knowledge system for a VP of Compliance, implemented as Claude Code Skills (`.claude/commands/`) with Python utilities.
+A set of Claude Code skills for a second brain / PKM system and compliance work. Drop the `.claude/commands/` folder into any Claude Code project to install.
 
-## Project Purpose
+## What This Is
 
-Two interlocking skill sets:
-1. **Second Brain / PKM** — capture, organize, retrieve, and synthesize personal knowledge and working notes
-2. **Compliance Brain** — help a VP of Compliance manage regulatory tracking, gap analysis, risk registers, audit prep, policy drafting, and regulatory change monitoring
+A plugin — no Python, no dependencies, no server. Just markdown skill files that tell Claude how to use its built-in tools (Read, Write, Grep, Glob, WebFetch) to run structured workflows.
 
-## Project Structure
+## How Skills Work
+
+Each `.md` file in `.claude/commands/` becomes a `/skill-name` slash command in Claude Code. The file is an instruction set Claude follows when the command is invoked. `$ARGUMENTS` captures anything the user types after the command name.
+
+## Skill Sets
+
+### Second Brain — Capture
+- `/brain-capture` — universal router
+- `/brain-capture-meeting` — structured meeting notes with action items
+- `/brain-capture-reading` — reading notes and takeaways
+- `/brain-capture-decision` — decision log with rationale and alternatives
+- `/brain-capture-person` — notes on a person or contact
+
+### Second Brain — Ingest from M365
+- `/brain-ingest-email` — capture an Outlook email or thread
+- `/brain-ingest-teams` — capture a Teams chat or meeting transcript
+- `/brain-ingest-sharepoint` — fetch and capture a SharePoint doc or page
+- `/brain-ingest-calendar` — capture a calendar event and build a pre-meeting brief
+
+### Second Brain — Retrieve & Synthesize
+- `/brain-retrieve` — search notes by topic or keyword using Grep
+- `/brain-synthesize` — synthesize all notes on a topic into a document
+- `/brain-daily` — daily review: recent captures, open action items
+
+### Compliance Workflows *(coming next)*
+- `/compliance-gap`
+- `/compliance-risk`
+- `/compliance-audit-prep`
+- `/compliance-policy`
+- `/reg-monitor`
+- `/reg-map`
+
+## Brain Storage
+
+Notes are written as markdown files to the brain root:
 
 ```
-he-compliance-brain/
-├── .claude/
-│   └── commands/         # Claude Code skill files (.md)
-├── src/                  # Python utilities called by skills
-├── docs/                 # Reference docs, templates, schema definitions
-└── CLAUDE.md             # This file
+~/brain/
+  meetings/    YYYY-MM-DD-<slug>.md
+  readings/    YYYY-MM-DD-<slug>.md
+  decisions/   YYYY-MM-DD-<slug>.md
+  people/      <person-name-slug>.md
 ```
 
-## Skill Naming Convention
+Override the root by setting `BRAIN_PATH` in your environment.
 
-Skills live in `.claude/commands/` as markdown files. Name them with a prefix that groups them:
+## Skill File Convention
 
-- `brain-*`      — second brain / PKM skills (capture, organize, retrieve)
-- `compliance-*` — compliance workflow skills (track, analyze, draft, audit)
-- `reg-*`        — regulatory intelligence skills (monitor, parse, map)
-
-## Python Utilities (`src/`)
-
-Any Python scripts invoked by skills go here. Keep them thin CLI wrappers — accept JSON or plain text on stdin, return structured output on stdout.
-
-## Development Notes
-
-- Skills are markdown prompt files; they are invoked via `/skill-name` in Claude Code
-- Use `$ARGUMENTS` in skill files to accept user input
-- Skills can shell out to `src/` Python scripts for data-heavy operations
-- The primary user is a VP of Compliance — assume regulatory expertise, prefer concise outputs, structured templates over prose
+- One file per skill, named to match the slash command
+- Instructions written for Claude to follow step-by-step
+- Use `$ARGUMENTS` for user input
+- Reference built-in tools by name: Write, Read, Grep, Glob, WebFetch
