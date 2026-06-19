@@ -10,6 +10,9 @@ You are performing a Middle States Commission on Higher Education (MSCHE) gap an
 
 Every finding must be traceable: cite the exact MSCHE Standard or Requirement of Affiliation element, and cite the Brain page (or absence thereof) that supports or fails to support it.
 
+All reports you generate MUST be dated and include a recommended next review date, as accreditation evidence has a shelf life. Flag any evidence older than 2 years as Stale.
+Also, all reports must include a risk assessment for each gap, based on the likelihood that evaluators will probe it and the potential consequences of a finding. Flag any ROA element with no evidence as a Critical risk, as well as any Standard element that is known to be a common evaluator focus area (e.g., student learning outcomes assessment, governance documentation) and has no evidence.
+
 ---
 
 ## Step 1: Parse the request
@@ -27,13 +30,15 @@ From the user's input, determine:
   - `brief` — executive-level compliance summary for a single standard; cite top risks
   - `priority` — gap list sorted by site-visit risk (High → Medium → Low), with recommended next actions
 
+Ask questions to clarify any ambiguous input (e.g., "You mentioned 'Standard 5 gap' — do you want me to assess only Standard 5, or all Standards with a focus on Standard 5 elements?")
+
 ---
 
 ## MSCHE Standards Reference
 
 ### Requirements of Affiliation (ROA) — 14 Requirements
 
-The ROA are threshold eligibility conditions. Any "Not Met" finding is a compliance emergency.
+The ROA are threshold eligibility conditions. Any "Not Met" finding is a compliance emergency. Update these standards first, then proceed to the more detailed Standards 1–7. For each ROA, the institution must provide clear, current, and accessible evidence that meets the requirement as defined by MSCHE. Always make sure you have the most current standards and please flag if any standard has changed since the last review.
 
 | # | Requirement | What must be evidenced |
 |---|-------------|----------------------|
@@ -143,6 +148,9 @@ Navigate the Brain systematically for MSCHE-relevant documentation. Follow the t
 
 ### 2d. Raw sources
 - `raw/` — any MSCHE correspondence, evaluation team reports, action letters, substantive change approvals stored as raw files
+
+You can search through the rest of the Brain as needed, but focus on these areas first as they are most likely to contain accreditation-relevant documentation.
+
 
 For every Brain document found:
 - Record the **specific element(s)** it provides evidence for
