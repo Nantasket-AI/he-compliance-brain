@@ -2,6 +2,7 @@
 name: audit
 description: External audit response and corrective action planning. Structures the institution's response to findings from the Department of Education (OCR, FSA), OIG, state agencies, or other external auditors. Produces a formal Corrective Action Plan (CAP), creates tracking tasks, and monitors closure. Use when audit findings are received, when a CAP is due, or when monitoring ongoing remediation progress.
 argument-hint: "<audit source> [mode:cap|status|brief|escalate] — e.g. 'OCR complaint #XX-YYYY cap' or 'OIG audit status' or 'FSA program review brief'"
+allowed-tools: Read, Write, Grep, Glob, WebFetch
 ---
 
 # /compliance-brain:audit — External Audit Response & Corrective Action Planning
