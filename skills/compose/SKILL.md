@@ -4,7 +4,7 @@ description: "Compose a message (email, Teams message, Slack post, etc.) grounde
 argument-hint: "<format> <topic or recipient> — e.g. 'email to Jane about API migration progress' or 'teams message to Alex re: sprint timeline'"
 ---
 
-# /the-brain:compose — Draft a Message from Brain Context
+# /compliance-brain:compose — Draft a Message from Brain Context
 
 Compose a professional message in the requested format (email, Teams message, Slack post, meeting invite body, etc.) that is grounded in the Brain's accumulated knowledge and live connector data. The message should sound like *you* wrote it — informed, specific, and contextually aware.
 
@@ -95,7 +95,7 @@ Then ask: **"Ready to send, or want changes?"**
 If the message was substantive (project update, stakeholder comms, decision notification), append to `log.md`:
 
 ```
-## [YYYY-MM-DD] system | /the-brain:compose — [format] to [recipient] re: [topic]
+## [YYYY-MM-DD] system | /compliance-brain:compose — [format] to [recipient] re: [topic]
 Drafted [format] grounded in [[project-page]], [[meeting-page]]. [Sent/Not sent — user copied manually].
 ```
 

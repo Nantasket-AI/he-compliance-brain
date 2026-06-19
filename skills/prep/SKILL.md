@@ -4,7 +4,7 @@ description: Assemble a briefing for an upcoming meeting or event. Pulls project
 argument-hint: <meeting or topic name>
 ---
 
-# /the-brain:prep — Meeting Preparation
+# /compliance-brain:prep — Meeting Preparation
 
 Ships with the the-brain plugin; available wherever the plugin is enabled.
 

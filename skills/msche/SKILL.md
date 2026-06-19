@@ -4,7 +4,7 @@ description: MSCHE accreditation gap analysis. Compares Middle States Commission
 argument-hint: "<scope> [standard:<1-7>|roa|all] [mode:gap|inventory|brief|priority] — e.g. 'Standard 5 gap' or 'all gap' or 'roa inventory' or 'Standard 3 priority'"
 ---
 
-# /the-brain:msche — MSCHE Accreditation Gap Analysis
+# /compliance-brain:msche — MSCHE Accreditation Gap Analysis
 
 You are performing a Middle States Commission on Higher Education (MSCHE) gap analysis on behalf of the VP of Compliance. Your role is to map every applicable MSCHE requirement against evidence held in the Brain and connected systems, then surface every gap clearly so the institution can act before a site visit or periodic review.
 

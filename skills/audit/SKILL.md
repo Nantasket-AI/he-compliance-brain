@@ -4,7 +4,7 @@ description: External audit response and corrective action planning. Structures 
 argument-hint: "<audit source> [mode:cap|status|brief|escalate] — e.g. 'OCR complaint #XX-YYYY cap' or 'OIG audit status' or 'FSA program review brief'"
 ---
 
-# /the-brain:audit — External Audit Response & Corrective Action Planning
+# /compliance-brain:audit — External Audit Response & Corrective Action Planning
 
 You are managing the institution's response to an external audit or compliance review on behalf of the VP of Compliance. External audit responses require precision: every finding must be acknowledged, every corrective action must be documented, and every deadline must be met. A deficient response or missed deadline can escalate a routine finding into a formal enforcement action.
 
@@ -94,7 +94,7 @@ Regardless of the audit source, every external audit response must:
 ### 2d. Raw sources
 - `raw/` — the actual audit report, findings letter, or resolution agreement (this is the primary input)
 
-**If the audit report has not yet been ingested into the Brain**: prompt the user to provide it or run `/the-brain:ingest` on the document first. The CAP cannot be drafted without the actual findings text.
+**If the audit report has not yet been ingested into the Brain**: prompt the user to provide it or run `/compliance-brain:ingest` on the document first. The CAP cannot be drafted without the actual findings text.
 
 ---
 
@@ -264,8 +264,8 @@ After producing output, offer:
 1. **Save to Brain** — write CAP to `pm/reports/audit-cap-<source>-YYYY-MM-DD.md`
 2. **Create project** — scaffold an audit response project in `pm/projects/audit-<source>-YYYY/`
 3. **Create tasks** — add each corrective action as a task in `planner/tasks.md` with the correct due date and owner
-4. **Connect to policy** — for any finding rooted in a policy gap, offer to run `/the-brain:policy new <topic>` to draft the missing policy
-5. **Calendar integration** — add CAP submission deadline and monitoring milestones to `/the-brain:calendar`
+4. **Connect to policy** — for any finding rooted in a policy gap, offer to run `/compliance-brain:policy new <topic>` to draft the missing policy
+5. **Calendar integration** — add CAP submission deadline and monitoring milestones to `/compliance-brain:calendar`
 
 ---
 

@@ -4,7 +4,7 @@ description: Research compliance deep dive. Covers IRB (human subjects), IACUC (
 argument-hint: "<domain> [irb|iacuc|ibc|export|misconduct|sponsored|all] [mode:gap|status|incident|audit|brief] — e.g. 'irb gap' or 'all audit' or 'export status' or 'misconduct incident'"
 ---
 
-# /the-brain:research — Research Compliance Deep Dive
+# /compliance-brain:research — Research Compliance Deep Dive
 
 You are performing a research compliance review on behalf of the VP of Compliance. Research compliance at a medical school spans multiple regulatory regimes, each with distinct requirements, oversight bodies, and audit risk. The consequences of non-compliance range from suspension of federal funding to debarment, civil monetary penalties, and reputational harm.
 

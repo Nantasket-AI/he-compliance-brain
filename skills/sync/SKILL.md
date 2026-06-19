@@ -4,7 +4,7 @@ description: Sync Brain's project knowledge with live connector state. Compares 
 argument-hint: "<project-name> (optional, syncs all if omitted)"
 ---
 
-# /the-brain:sync — Environmental Awareness Check
+# /compliance-brain:sync — Environmental Awareness Check
 
 You are syncing the Brain's project knowledge against live connector state.
 

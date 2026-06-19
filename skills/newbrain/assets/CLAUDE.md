@@ -12,7 +12,7 @@ The Brain is a personal knowledge system organized as three specialized sub-brai
 
 **`pm/` — The Project Manager.** Business, product, and project knowledge. Active projects with decision logs, architecture, stakeholders, timelines. Meeting notes and summaries. Institutional memory — what's happening, what was decided, and why. Synthesizes meeting transcripts, notes, and live connector data into compiled project narratives. Does NOT store raw tickets or code — stores the understanding.
 
-**`planner/` — The Executive Assistant.** Day-to-day operations organized in a date hierarchy (`planner/YYYY/MM/YYYY-MM-DD.md`). Each daily file serves as both a prospective plan (schedule, priorities, talking points) and a retrospective activity log (`/the-brain:log` appends throughout the day). Also holds the dashboard, weekly reflections, and task lists. Executive function — reads from the other two sub-brains and from connectors, produces actionable output.
+**`planner/` — The Executive Assistant.** Day-to-day operations organized in a date hierarchy (`planner/YYYY/MM/YYYY-MM-DD.md`). Each daily file serves as both a prospective plan (schedule, priorities, talking points) and a retrospective activity log (`/compliance-brain:log` appends throughout the day). Also holds the dashboard, weekly reflections, and task lists. Executive function — reads from the other two sub-brains and from connectors, produces actionable output.
 
 ### Layers
 
@@ -20,7 +20,7 @@ The Brain is a personal knowledge system organized as three specialized sub-brai
 
 **Self-awareness** — this file (CLAUDE.md). The Brain's knowledge of itself.
 
-**Agency** — skills shipped with the **the-brain plugin**, invoked as `/the-brain:<skill>`. Named workflows that orchestrate across sub-brains and connectors.
+**Agency** — skills shipped with the **the-brain plugin**, invoked as `/compliance-brain:<skill>`. Named workflows that orchestrate across sub-brains and connectors.
 
 **Raw sources** (`raw/`) — immutable source dump. Articles, PDFs, images, notes, and connector-reference stubs for Outlook/Teams content. The LLM never modifies anything in `raw/`. Every derived page links back to its raw source or stub.
 
@@ -109,7 +109,7 @@ date: YYYY-MM-DD
 - **Paste rule**: if the user pastes a transcript or email body, process it in-context to build derived pages + a stub; the verbatim body is never written to disk.
 - **Decline-verbatim-save rule**: if the user explicitly asks to save a verbatim Outlook/Teams copy, decline, explain the data governance policy, and offer the stub + a richer derived page instead.
 
-When a skill or workflow encounters Outlook/Teams data (e.g., `/the-brain:prep` reads a relevant email), it saves a connector-reference stub to `raw/` and builds derived pages from the in-context content.
+When a skill or workflow encounters Outlook/Teams data (e.g., `/compliance-brain:prep` reads a relevant email), it saves a connector-reference stub to `raw/` and builds derived pages from the in-context content.
 
 ---
 
@@ -142,7 +142,7 @@ Headings that other pages link to via `[[page#heading]]` are **stable anchors**.
 
 1. Grep for `[[page-name#heading-text]]` across all sub-brains
 2. Update every inbound reference in the same pass
-3. The `/the-brain:lint` skill verifies no broken heading anchors remain
+3. The `/compliance-brain:lint` skill verifies no broken heading anchors remain
 
 ### Codebase References
 
@@ -173,7 +173,7 @@ Files in `raw/` follow the convention: `YYYY-MM-DD-descriptive-slug.ext`
 
 - Slug = lowercase, hyphens for spaces, no special characters
 - Example: `2026-04-10-api-review-meeting-transcript.md`
-- The `/the-brain:ingest` skill auto-renames files to this convention when processing
+- The `/compliance-brain:ingest` skill auto-renames files to this convention when processing
 - **Connector-reference stubs** (Tier 2 sources) use the suffix `.ref.md`: `YYYY-MM-DD-descriptive-slug.ref.md`
   - Example: `2026-04-10-api-review-meeting.ref.md`
 
@@ -193,7 +193,7 @@ Pages derived from raw sources additionally have:
 - Notes add: `date`, `projects` (if applicable), `context`
 
 **Planner page types:** `daily`, `weekly`, `task`
-- Daily files (`planner/YYYY/MM/YYYY-MM-DD.md`) serve dual duty: morning plan (schedule, priorities, prep notes) and activity log (`/the-brain:log` appends work entries throughout the day)
+- Daily files (`planner/YYYY/MM/YYYY-MM-DD.md`) serve dual duty: morning plan (schedule, priorities, prep notes) and activity log (`/compliance-brain:log` appends work entries throughout the day)
 
 See `templates.md` for full page templates. Skills reference templates when creating pages.
 
@@ -212,7 +212,7 @@ Rules:
 
 ### Log Conventions
 
-**`log.md`** is the Brain's **operational changelog** — it records operations that change the Brain itself (page creates, index updates, ingests, syncs, lints, refactors, schema changes). It does NOT record personal work activity (what the user worked on during the day). That goes in the daily file's Activity Log section via `/the-brain:log`.
+**`log.md`** is the Brain's **operational changelog** — it records operations that change the Brain itself (page creates, index updates, ingests, syncs, lints, refactors, schema changes). It does NOT record personal work activity (what the user worked on during the day). That goes in the daily file's Activity Log section via `/compliance-brain:log`.
 
 **Rule of thumb**: if it changed a Brain page, it goes in `log.md`. If it's about what you did at work, it goes in `planner/YYYY/MM/YYYY-MM-DD.md` Activity Log.
 
@@ -240,10 +240,10 @@ Files stay in place (wikilinks never break). Archival is metadata + index, not f
 
 - **Projects**: `status: completed` → section collapses to one line under "Archived" in `pm/index.md`
 - **Daily files**: after weekly reflection is written, dailies (`planner/YYYY/MM/YYYY-MM-DD.md`) get `status: archived`, removed from active index
-- **Tasks**: completed tasks are pruned from `tasks.md` by `/the-brain:reflect` → become accomplishments in daily/weekly logs
+- **Tasks**: completed tasks are pruned from `tasks.md` by `/compliance-brain:reflect` → become accomplishments in daily/weekly logs
 - **Meeting pages**: archive with their project
 
-The `/the-brain:lint` skill flags archival candidates.
+The `/compliance-brain:lint` skill flags archival candidates.
 
 ---
 
@@ -260,7 +260,7 @@ The `/the-brain:lint` skill flags archival candidates.
 7. Update `wiki/overview.md` if the ingest shifts the big picture
 8. Append to `log.md`
 
-(For Outlook emails encountered during `/the-brain:prep` or similar: save a `.ref.md` connector-reference stub, derive insight directly into the prep doc — do not save verbatim email body.)
+(For Outlook emails encountered during `/compliance-brain:prep` or similar: save a `.ref.md` connector-reference stub, derive insight directly into the prep doc — do not save verbatim email body.)
 
 ### Ingest (meeting transcript / handwritten notes)
 
@@ -309,21 +309,21 @@ Before a meeting: gather project state, recent meeting history, entity context f
 
 ### Log (activity tracking)
 
-Run `/the-brain:log` from any Claude Code session. Read the user's description and the current conversation context. Synthesize a concise activity log entry. Append to today's daily file (`planner/YYYY/MM/YYYY-MM-DD.md`) Activity Log section. Update `planner/tasks.md` if work completed or created tasks.
+Run `/compliance-brain:log` from any Claude Code session. Read the user's description and the current conversation context. Synthesize a concise activity log entry. Append to today's daily file (`planner/YYYY/MM/YYYY-MM-DD.md`) Activity Log section. Update `planner/tasks.md` if work completed or created tasks.
 
 ### Met (meeting transcript acquisition)
 
-User provides a brief description of a meeting → search Outlook calendar → get full event details → fetch transcript via Teams connector (fallback: ask user to paste) → process transcript **in-context** to build derived pages → save a `.ref.md` connector-reference stub to `raw/` with retrieval keys (never the verbatim transcript body) → invoke `/the-brain:ingest` for full processing (meeting page, project updates, entity back-links, action items). The provenance chain is always: project page decision → `[[pm/meetings/meeting#heading]]` → `[[raw/YYYY-MM-DD-slug.ref.md]]` stub → connector fetch.
+User provides a brief description of a meeting → search Outlook calendar → get full event details → fetch transcript via Teams connector (fallback: ask user to paste) → process transcript **in-context** to build derived pages → save a `.ref.md` connector-reference stub to `raw/` with retrieval keys (never the verbatim transcript body) → invoke `/compliance-brain:ingest` for full processing (meeting page, project updates, entity back-links, action items). The provenance chain is always: project page decision → `[[pm/meetings/meeting#heading]]` → `[[raw/YYYY-MM-DD-slug.ref.md]]` stub → connector fetch.
 
-### Daily Orchestration (/the-brain:myday)
+### Daily Orchestration (/compliance-brain:myday)
 
-The `/the-brain:myday` skill orchestrates the daily workflow with day-of-week branching:
+The `/compliance-brain:myday` skill orchestrates the daily workflow with day-of-week branching:
 
 | Day | Order |
 |-----|-------|
-| Monday | `/the-brain:sync` → `/the-brain:lint` → `/the-brain:plot` → generate daily plan |
-| Tue–Thu | `/the-brain:sync` → generate daily plan |
-| Friday | `/the-brain:sync` → generate daily plan → `/the-brain:reflect` |
+| Monday | `/compliance-brain:sync` → `/compliance-brain:lint` → `/compliance-brain:plot` → generate daily plan |
+| Tue–Thu | `/compliance-brain:sync` → generate daily plan |
+| Friday | `/compliance-brain:sync` → generate daily plan → `/compliance-brain:reflect` |
 
 Every day: sync runs first (connector freshness), then the daily plan is generated by synthesizing Brain knowledge + live connector data. Monday adds a health check and full week plot. Friday closes the week with a reflection.
 
@@ -333,25 +333,25 @@ Every day: sync runs first (connector freshness), then the daily plan is generat
 
 ### Plugin Skills (`the-brain` plugin)
 
-All skills ship with the **the-brain plugin** and are invoked as `/the-brain:<skill>`. The four anywhere-skills (myday, standup, prep, log) work from any directory via the plugin's `brain_path` setting — they do not require the Brain to be the current working directory. `brain_path` applies to Claude Code only: Claude Cowork sessions are already rooted in the Brain folder, so Cowork users do not need (and cannot set) this setting.
+All skills ship with the **the-brain plugin** and are invoked as `/compliance-brain:<skill>`. The four anywhere-skills (myday, standup, prep, log) work from any directory via the plugin's `brain_path` setting — they do not require the Brain to be the current working directory. `brain_path` applies to Claude Code only: Claude Cowork sessions are already rooted in the Brain folder, so Cowork users do not need (and cannot set) this setting.
 
 | Skill | Description |
 |-------|-------------|
-| `/the-brain:newbrain` | Bootstrap a new Brain in a target folder. Creates directory structure, index files, overviews, CLAUDE.md, and templates. |
-| `/the-brain:ingest` | Process a raw source into the Brain. Auto-detects type (static file vs. Outlook/Teams → stub), routes to correct sub-brain(s). |
-| `/the-brain:ask` | Query the Brain's knowledge with cited, claim-level sources. |
-| `/the-brain:project` | View or create a project in the PM brain with live connector data. |
-| `/the-brain:sync` | Sync PM brain against live connectors. Flag drift, update pages. |
-| `/the-brain:lint` | Health-check the entire Brain. Find orphans, stale content, broken links, and raw/ governance violations. |
-| `/the-brain:reflect` | Generate daily/weekly reflection. Prune tasks, promote insights. |
-| `/the-brain:plot` | Plot the work week. Generate Mon–Fri daily planner files from Brain knowledge + live connectors. |
-| `/the-brain:met` | Meeting transcript acquisition. Find meeting in Outlook/Teams, fetch transcript in-context, save .ref.md stub to raw/, invoke /the-brain:ingest. |
-| `/the-brain:compose` | Compose a message (email, Teams, Slack, etc.) grounded in Brain context. Always drafts first — never sends without approval. |
-| `/the-brain:ticket` | Create or update a Jira ticket from Brain context. Pulls project decisions, meeting outcomes, action items. Always drafts first — never creates without approval. |
-| `/the-brain:myday` | Morning briefing: schedule, priorities, context. Works anywhere, richer inside the Brain. |
-| `/the-brain:standup` | Standup summary: yesterday, today, blockers. Formatted for Slack or reading aloud. |
-| `/the-brain:prep` | Meeting prep briefing: project state, recent changes, talking points. |
-| `/the-brain:log` | Activity log: update today's daily file with what you worked on. Reads conversation context. |
+| `/compliance-brain:newbrain` | Bootstrap a new Brain in a target folder. Creates directory structure, index files, overviews, CLAUDE.md, and templates. |
+| `/compliance-brain:ingest` | Process a raw source into the Brain. Auto-detects type (static file vs. Outlook/Teams → stub), routes to correct sub-brain(s). |
+| `/compliance-brain:ask` | Query the Brain's knowledge with cited, claim-level sources. |
+| `/compliance-brain:project` | View or create a project in the PM brain with live connector data. |
+| `/compliance-brain:sync` | Sync PM brain against live connectors. Flag drift, update pages. |
+| `/compliance-brain:lint` | Health-check the entire Brain. Find orphans, stale content, broken links, and raw/ governance violations. |
+| `/compliance-brain:reflect` | Generate daily/weekly reflection. Prune tasks, promote insights. |
+| `/compliance-brain:plot` | Plot the work week. Generate Mon–Fri daily planner files from Brain knowledge + live connectors. |
+| `/compliance-brain:met` | Meeting transcript acquisition. Find meeting in Outlook/Teams, fetch transcript in-context, save .ref.md stub to raw/, invoke /compliance-brain:ingest. |
+| `/compliance-brain:compose` | Compose a message (email, Teams, Slack, etc.) grounded in Brain context. Always drafts first — never sends without approval. |
+| `/compliance-brain:ticket` | Create or update a Jira ticket from Brain context. Pulls project decisions, meeting outcomes, action items. Always drafts first — never creates without approval. |
+| `/compliance-brain:myday` | Morning briefing: schedule, priorities, context. Works anywhere, richer inside the Brain. |
+| `/compliance-brain:standup` | Standup summary: yesterday, today, blockers. Formatted for Slack or reading aloud. |
+| `/compliance-brain:prep` | Meeting prep briefing: project state, recent changes, talking points. |
+| `/compliance-brain:log` | Activity log: update today's daily file with what you worked on. Reads conversation context. |
 
 ---
 

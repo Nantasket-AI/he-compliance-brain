@@ -3,7 +3,7 @@ name: lint
 description: Health check the entire Brain. Finds schema drift in CLAUDE.md, orphan pages, stale content, missing index entries, unresolved action items, broken heading anchors, raw/ governance violations, and cross-brain reference gaps. Use periodically to maintain Brain integrity.
 ---
 
-# /the-brain:lint — Brain Health Check
+# /compliance-brain:lint — Brain Health Check
 
 You are performing a comprehensive health check of the Brain. Scan all three sub-brains systematically.
 
@@ -15,7 +15,7 @@ The Brain's `CLAUDE.md` was installed at bootstrap from the plugin's canonical c
 
 **Canonical copy**: `${CLAUDE_PLUGIN_ROOT}/skills/newbrain/assets/CLAUDE.md` — read it alongside the Brain root's `CLAUDE.md`. If the canonical copy can't be read (skill run outside the plugin), skip this check and say so in the report.
 
-**Customized sections** — these three are personalized by `/the-brain:newbrain` and are **expected to differ**. Never flag content differences in them, and never overwrite them:
+**Customized sections** — these three are personalized by `/compliance-brain:newbrain` and are **expected to differ**. Never flag content differences in them, and never overwrite them:
 
 - Available Connectors
 - Timezone Convention
@@ -28,7 +28,7 @@ For these, check only that (a) the section still exists in the Brain's copy, and
 - Section in the canonical copy but missing from the Brain's → **Warning** (schema drift: plugin added it, or it was deleted locally)
 - Section whose content materially differs from the canonical copy → **Warning** (schema outdated, or edited locally)
 - Section in the Brain's copy but not the canonical one → **Suggestion** (local extension; legitimate, but note it so the user knows it won't survive a future re-bootstrap)
-- `CLAUDE.md` missing from the Brain root entirely → **Error** (the Brain has no schema; recommend re-running `/the-brain:newbrain` in a fresh folder and migrating, or restoring from the canonical copy)
+- `CLAUDE.md` missing from the Brain root entirely → **Error** (the Brain has no schema; recommend re-running `/compliance-brain:newbrain` in a fresh folder and migrating, or restoring from the canonical copy)
 
 **Auto-fix offer**: for drifted non-customized sections, offer to update the Brain's `CLAUDE.md` from the canonical copy — replacing only the drifted sections and leaving the three customized sections untouched. Show the user which sections will change before writing. If a drifted section appears to contain deliberate local edits (not just an older plugin version), say so and let the user decide per section.
 
@@ -92,7 +92,7 @@ Heuristics that indicate a verbatim Outlook/Teams copy:
 
 **(a) Delete** — Before offering this option, verify that derived pages exist (a meeting page, notes, or analysis page) that capture the knowledge from the file. If no derived pages exist, do **not** offer deletion as the primary option — lead with option (b) and warn that choosing deletion will permanently lose the knowledge.
 
-**(b) Summarize & catalog** — Run the /the-brain:ingest pipeline on the file's content: extract knowledge into proper Brain pages (meeting page, notes, etc.), then replace the raw file with a `.ref.md` connector-reference stub containing only metadata and retrieval instructions, and update all inbound `[[raw/...]]` links in the Brain to point at the new stub.
+**(b) Summarize & catalog** — Run the /compliance-brain:ingest pipeline on the file's content: extract knowledge into proper Brain pages (meeting page, notes, etc.), then replace the raw file with a `.ref.md` connector-reference stub containing only metadata and retrieval instructions, and update all inbound `[[raw/...]]` links in the Brain to point at the new stub.
 
 **This check never auto-deletes or auto-replaces files.** Report findings and wait for the user to choose (a) or (b) for each violation.
 
@@ -115,7 +115,7 @@ Include governance violations in the final report under **Errors** (verbatim cop
 
 - Projects with `status: completed` still in active index sections
 - Daily logs (in `planner/YYYY/MM/YYYY-MM-DD.md`) older than 2 weeks without a weekly reflection covering them
-- Completed tasks still in `planner/tasks.md` (should have been pruned by `/the-brain:reflect`)
+- Completed tasks still in `planner/tasks.md` (should have been pruned by `/compliance-brain:reflect`)
 
 ### 9. Overview freshness
 
@@ -134,6 +134,6 @@ For complex issues, create tasks in `planner/tasks.md`.
 
 Append to `log.md`:
 ```
-## [YYYY-MM-DD] lint | /the-brain:lint Brain health check
+## [YYYY-MM-DD] lint | /compliance-brain:lint Brain health check
 Errors: N, Warnings: N, Suggestions: N. Auto-fixed: [list]. Tasks created: [list].
 ```

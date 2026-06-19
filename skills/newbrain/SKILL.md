@@ -3,7 +3,7 @@ name: newbrain
 description: Bootstrap a new Brain in a target folder. Creates the directory structure, installs the Brain schema (CLAUDE.md) and page templates, configures timezone and connectors, and scaffolds all starter files. Run once per new Brain.
 ---
 
-# /the-brain:newbrain — Agent Instructions
+# /compliance-brain:newbrain — Agent Instructions
 
 **You are bootstrapping a new Brain for the user.** Read this file completely, then execute every step in order. The user should only need to answer a few questions — you handle everything else.
 
@@ -27,7 +27,7 @@ Options: **"Yes, scaffold here"** / **"No — I'll give a different path"** (the
 
 **REFUSE to scaffold and explain why if either of these is true:**
 
-1. The target already contains a Brain — it has a `CLAUDE.md` whose content includes the Brain schema markers (e.g., the text "The Brain is a personal knowledge system") OR it already contains any of `wiki/`, `pm/`, or `planner/` directories. Tell the user: "A Brain already exists at that path. Use `/the-brain:lint` to check its health or choose a different target folder."
+1. The target already contains a Brain — it has a `CLAUDE.md` whose content includes the Brain schema markers (e.g., the text "The Brain is a personal knowledge system") OR it already contains any of `wiki/`, `pm/`, or `planner/` directories. Tell the user: "A Brain already exists at that path. Use `/compliance-brain:lint` to check its health or choose a different target folder."
 
 2. The target is the plugin install directory itself — it contains `.claude-plugin/plugin.json`. Tell the user: "That path is the plugin install directory. Pick a separate folder for your Brain."
 
@@ -123,7 +123,7 @@ If they choose yes (or supply details via "Other"), follow up conversationally f
 
 Use their answer to:
 1. Fill in the "External Reference Conventions" section of `CLAUDE.md`. Replace every `<!-- CUSTOMIZE -->` comment with their specific system details. Remove any systems they don't use.
-2. Note any Jira project keys, repo paths, Confluence space names, or other identifiers — these will be useful when the user creates their first project with `/the-brain:project new`.
+2. Note any Jira project keys, repo paths, Confluence space names, or other identifiers — these will be useful when the user creates their first project with `/compliance-brain:project new`.
 
 ---
 
@@ -186,7 +186,7 @@ The Scholar brain is currently empty. It will grow as sources are ingested and k
 
 ## Current State
 
-No content yet. Use `/the-brain:ingest` to add your first source.
+No content yet. Use `/compliance-brain:ingest` to add your first source.
 ```
 
 ### `wiki/index.md`
@@ -234,7 +234,7 @@ The PM brain is currently empty. It will grow as projects are created and meetin
 
 ## Active Projects
 
-No active projects yet. Use `/the-brain:project new <name>` to create your first project.
+No active projects yet. Use `/compliance-brain:project new <name>` to create your first project.
 ```
 
 ### `pm/index.md`
@@ -280,7 +280,7 @@ updated: YYYY-MM-DD
 
 ## Current Week
 
-*No daily files yet. Run `/the-brain:myday` to generate today's plan.*
+*No daily files yet. Run `/compliance-brain:myday` to generate today's plan.*
 
 ## Past Weeks
 
@@ -301,7 +301,7 @@ updated: YYYY-MM-DD
 
 ## Today
 
-*Run `/the-brain:myday` to populate.*
+*Run `/compliance-brain:myday` to populate.*
 
 ## Priorities
 
@@ -361,7 +361,7 @@ Chronological record of operations that change the Brain.
 Format: `## [YYYY-MM-DD] verb | Subject`
 
 ## [YYYY-MM-DD] system | Brain bootstrapped
-Fresh Brain scaffolded via /the-brain:newbrain. Sub-brains: wiki, pm, planner. Schema and templates installed from plugin. Ready for first ingest.
+Fresh Brain scaffolded via /compliance-brain:newbrain. Sub-brains: wiki, pm, planner. Schema and templates installed from plugin. Ready for first ingest.
 ```
 
 ---
@@ -370,17 +370,17 @@ Fresh Brain scaffolded via /the-brain:newbrain. Sub-brains: wiki, pm, planner. S
 
 **Only run this step if the user answered "Yes" to the Primary Brain question in Step 4.** If they answered "No", skip straight to Step 8 and leave `brain_path` completely untouched.
 
-Configure the plugin's `brain_path` setting automatically so the anywhere-skills (`/the-brain:log`, `/the-brain:myday`, `/the-brain:standup`, `/the-brain:prep`) can find this Brain from any directory. The setting lives in the user's `~/.claude/settings.json` under `pluginConfigs`.
+Configure the plugin's `brain_path` setting automatically so the anywhere-skills (`/compliance-brain:log`, `/compliance-brain:myday`, `/compliance-brain:standup`, `/compliance-brain:prep`) can find this Brain from any directory. The setting lives in the user's `~/.claude/settings.json` under `pluginConfigs`.
 
 1. Read `~/.claude/settings.json`. If the file does not exist, treat it as `{}`.
-2. Find the plugin's config key inside `pluginConfigs`: look for an existing key that starts with `the-brain@` (normally `the-brain@the-brain`). If none exists, use `the-brain@the-brain`.
+2. Find the plugin's config key inside `pluginConfigs`: look for an existing key that starts with `compliance-brain@` (normally `compliance-brain@compliance-brain`). If none exists, use `compliance-brain@compliance-brain`.
 3. Act based on the current value of `pluginConfigs.<key>.options.brain_path`:
    - **Unset or empty** → set it to the absolute path of the new Brain. Create the `pluginConfigs.<key>.options` structure if needed. Preserve every other key in the file exactly as-is and write back valid JSON.
    - **Already set to this Brain's path** → nothing to do.
    - **Set to a different path** → the user has another Brain configured. Ask before changing:
      > Your `brain_path` currently points to `<existing path>`. Should I repoint it to this new Brain at `<target path>`, or leave it as-is? (The anywhere-skills follow whichever Brain `brain_path` points to.)
      Apply whichever the user chooses.
-4. If `~/.claude/settings.json` cannot be written (permissions, sandbox), do not fail the bootstrap — note it and tell the user to run `/plugin configure the-brain@the-brain` instead.
+4. If `~/.claude/settings.json` cannot be written (permissions, sandbox), do not fail the bootstrap — note it and tell the user to run `/plugin configure compliance-brain@compliance-brain` instead.
 
 Record what happened (set automatically / already set / kept existing / manual fallback / skipped — secondary Brain) for the welcome message in Step 8.
 
@@ -409,7 +409,7 @@ Print a welcome message that covers:
 | `/standup` | Generate a standup summary | Before your next standup |
 | `/prep <meeting>` | Meeting prep briefing | Before any important meeting |
 
-(Short names work as long as no other plugin defines a skill with the same name; the fully-qualified form is `/the-brain:<skill>`.)
+(Short names work as long as no other plugin defines a skill with the same name; the fully-qualified form is `/compliance-brain:<skill>`.)
 
 **How it grows:**
 - The Brain starts empty and compounds over time. Every meeting ingested, every project created, every source filed makes all future interactions richer.
@@ -419,8 +419,8 @@ Print a welcome message that covers:
 **One habit to build:** Run `/myday` every morning. Everything else flows from there.
 
 **Important — configure brain_path (Claude Code only):**
-If you use this Brain in **Claude Code**, set the `brain_path` plugin setting for **the-brain** to `<absolute path to this Brain>`. This lets `/the-brain:log`, `/the-brain:myday`, `/the-brain:standup`, and `/the-brain:prep` find this Brain from any directory — not just when your working directory is the Brain root. Without this setting, those skills only work when you are already inside the Brain folder.
+If you use this Brain in **Claude Code**, set the `brain_path` plugin setting for **the-brain** to `<absolute path to this Brain>`. This lets `/compliance-brain:log`, `/compliance-brain:myday`, `/compliance-brain:standup`, and `/compliance-brain:prep` find this Brain from any directory — not just when your working directory is the Brain root. Without this setting, those skills only work when you are already inside the Brain folder.
 
 If you use the Brain through **Claude Cowork**, skip this step — Cowork sessions are already rooted in the Brain folder, and plugin settings like `brain_path` are not available there. The skills will find the Brain via the working directory instead.
 **brain_path status:**
-If applicable (Claude Code, NOT Cowork), report the Step 7 outcome — e.g. "`brain_path` was set automatically to `<absolute path to this Brain>`, so `/log`, `/myday`, `/standup`, and `/prep` will find this Brain from any directory. Change it anytime with `/plugin configure the-brain@the-brain`." If the user chose **secondary Brain** in Step 4, say instead: "`brain_path` was left untouched — this is a secondary Brain. Its skills work whenever you're inside this folder; the anywhere-skills keep following your primary Brain." If Step 7 fell back to manual configuration or the user kept a different Brain's path, say that and explain that the anywhere-skills follow `brain_path` when run outside a Brain folder.
+If applicable (Claude Code, NOT Cowork), report the Step 7 outcome — e.g. "`brain_path` was set automatically to `<absolute path to this Brain>`, so `/log`, `/myday`, `/standup`, and `/prep` will find this Brain from any directory. Change it anytime with `/plugin configure compliance-brain@compliance-brain`." If the user chose **secondary Brain** in Step 4, say instead: "`brain_path` was left untouched — this is a secondary Brain. Its skills work whenever you're inside this folder; the anywhere-skills keep following your primary Brain." If Step 7 fell back to manual configuration or the user kept a different Brain's path, say that and explain that the anywhere-skills follow `brain_path` when run outside a Brain folder.

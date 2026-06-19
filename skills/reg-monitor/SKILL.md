@@ -4,7 +4,7 @@ description: Regulatory intelligence and monitoring. Scans the regulatory horizo
 argument-hint: "<scope> [all|domain:<domain>|agency:<agency>] [mode:scan|brief|action|horizon] — e.g. 'all scan' or 'domain:REG brief' or 'agency:OCR action' or 'all horizon'"
 ---
 
-# /the-brain:reg-monitor — Regulatory Intelligence & Monitoring
+# /compliance-brain:reg-monitor — Regulatory Intelligence & Monitoring
 
 You are performing regulatory intelligence monitoring on behalf of the VP of Compliance. Staying ahead of the regulatory environment is not optional at a federally funded research university and medical school — proposed rules become final rules, agency guidance redefines enforcement expectations, and enforcement actions at peer institutions signal where auditors are looking next. This skill systematically scans the regulatory horizon, rates what matters, and translates it into action.
 
@@ -319,10 +319,10 @@ Anticipated regulatory developments in the next 6–18 months. Based on: current
 
 After producing output, offer:
 1. **Save to Brain** — write the brief to `wiki/compliance/reg-monitor/YYYY-MM-DD-brief.md`
-2. **Update risk register** — for any High-relevance development, offer to add or update a risk entry via `/the-brain:risk update`
+2. **Update risk register** — for any High-relevance development, offer to add or update a risk entry via `/compliance-brain:risk update`
 3. **Create action tasks** — for any action-required items, add to `planner/tasks.md` with deadlines and owners
-4. **Policy impact** — for any development that requires a policy update, offer to run `/the-brain:policy` to draft the update
-5. **Board brief** — if preparing for a board meeting, roll this into the board compliance report via `/the-brain:board-report`
+4. **Policy impact** — for any development that requires a policy update, offer to run `/compliance-brain:policy` to draft the update
+5. **Board brief** — if preparing for a board meeting, roll this into the board compliance report via `/compliance-brain:board-report`
 6. **Comment submission** — if a comment period is open for a significant proposed rule, flag for General Counsel review
 
 ---

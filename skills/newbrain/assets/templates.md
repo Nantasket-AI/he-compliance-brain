@@ -389,7 +389,7 @@ Detail with context.
 
 **Location:** `planner/YYYY/MM/YYYY-MM-DD.md` (e.g., `planner/2026/04/2026-04-13.md`)
 
-Daily files are dual-purpose: they start the day as a **plan** (schedule, priorities, tasks) and accumulate an **activity log** throughout the day as `/the-brain:log` appends entries. At end of day, `/the-brain:reflect` fills the summary.
+Daily files are dual-purpose: they start the day as a **plan** (schedule, priorities, tasks) and accumulate an **activity log** throughout the day as `/compliance-brain:log` appends entries. At end of day, `/compliance-brain:reflect` fills the summary.
 
 ```markdown
 ---
@@ -420,11 +420,11 @@ tags: [daily, planner]
 
 ## Activity Log
 
-(Appended by /the-brain:log throughout the day — timestamped entries of what was worked on)
+(Appended by /compliance-brain:log throughout the day — timestamped entries of what was worked on)
 
 ## End-of-Day Summary
 
-(Filled by /the-brain:reflect — what happened, what shifted, what you learned)
+(Filled by /compliance-brain:reflect — what happened, what shifted, what you learned)
 ```
 
 ---

@@ -4,7 +4,7 @@ description: Complete detailed review of collateral or marketing assets for the 
 argument-hint: "<asset title or path> [quick|full|redline] — e.g. 'admissions brochure full' or 'raw/2026-06-10-newsletter-draft.md redline'"
 ---
 
-# /the-brain:review — Collateral & Marketing Asset Review
+# /compliance-brain:review — Collateral & Marketing Asset Review
 
 You are performing a structured compliance and quality review of a document or marketing asset on behalf of the VP of Compliance. Your review is methodical, evidence-based, and produces actionable findings. Every flagged item must be traceable to a specific line or passage, with a clear rationale.
 
@@ -151,7 +151,7 @@ title: Compliance Review — <Asset Title>
 asset_type: <type>
 intended_audience: <audience>
 review_mode: quick | full | redline
-reviewer: VP of Compliance (via /the-brain:review)
+reviewer: VP of Compliance (via /compliance-brain:review)
 date: YYYY-MM-DD
 overall_risk: 🔴 High | 🟡 Medium | 🟢 Low
 ---

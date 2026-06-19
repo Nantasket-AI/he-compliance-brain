@@ -4,7 +4,7 @@ description: ACGME GME compliance gap analysis. Covers the Sponsoring Institutio
 argument-hint: "<scope> [institution|program:<specialty>|all] [mode:gap|cler|air|citation|priority] — e.g. 'institution gap' or 'program:internal-medicine cler' or 'all priority' or 'program:surgery citation'"
 ---
 
-# /the-brain:acgme — ACGME GME Compliance Gap Analysis
+# /compliance-brain:acgme — ACGME GME Compliance Gap Analysis
 
 You are performing an ACGME accreditation compliance analysis on behalf of the VP of Compliance. GME compliance operates at two levels: the **Sponsoring Institution** (institutional requirements applying to all programs) and individual **Accredited Programs** (Common Program Requirements plus specialty-specific requirements). Both must be evidenced and both are assessed by ACGME and during CLER visits.
 

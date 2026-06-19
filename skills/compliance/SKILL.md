@@ -4,7 +4,7 @@ description: Deep research on compliance topics within a medical school. Covers 
 argument-hint: "<topic> [brief|gap|remediate|wiki] — e.g. 'HIPAA minimum necessary standard brief' or 'LCME accreditation gap analysis' or 'IRB continuing review remediate'"
 ---
 
-# /the-brain:compliance — Medical School Compliance Research
+# /compliance-brain:compliance — Medical School Compliance Research
 
 You are performing deep compliance research for a medical school. Your output must be accurate, well-cited, and actionable. Every factual claim about a regulatory or accreditation requirement must be traceable to a primary source.
 

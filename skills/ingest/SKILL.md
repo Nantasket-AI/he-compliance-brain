@@ -5,7 +5,7 @@ argument-hint: <filename or path in raw/>
 allowed-tools: Read Write Edit Bash(mv *) Bash(cp *) Bash(ls *)
 ---
 
-# /the-brain:ingest — Source Intake
+# /compliance-brain:ingest — Source Intake
 
 You are processing a new source into the Brain. Follow the workflow in CLAUDE.md precisely.
 
@@ -118,7 +118,7 @@ The provenance chain is always: **project page decision → `[[pm/meetings/meeti
 5. **Back-link entities**: For each attendee's entity page, add the new meeting to their **Meetings** section (create the section if it doesn't exist). Format: `- [[pm/meetings/meeting-name]] — brief context (date). Key contribution or role in this meeting.` This ensures bidirectional navigation: meeting → entity AND entity → meeting.
 6. Extract action items → add to `planner/tasks.md` with `[[pm/meetings/meeting-name]]` links
 
-**When invoked by `/the-brain:met`**: The connector-reference stub is already saved to `raw/` with correct naming and metadata. The transcript text is in context. Skip Steps 1-2 (locate source, auto-rename) and start at Step 3 (discuss with user).
+**When invoked by `/compliance-brain:met`**: The connector-reference stub is already saved to `raw/` with correct naming and metadata. The transcript text is in context. Skip Steps 1-2 (locate source, auto-rename) and start at Step 3 (discuss with user).
 
 **Handwritten notes / voice memo / quick capture:**
 1. Create note page in `pm/notes/` using the Note template from `templates.md`

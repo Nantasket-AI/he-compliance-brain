@@ -4,7 +4,7 @@ description: Policy registry and review cycle management. Inventories all instit
 argument-hint: "<scope> [all|domain:<domain>|owner:<name>|standard:<ref>] [mode:inventory|gaps|overdue|map|new] — e.g. 'all overdue' or 'domain:research gaps' or 'standard:LCME-3.6 map' or 'new HIPAA minimum necessary'"
 ---
 
-# /the-brain:policy — Policy Registry & Review Cycle Management
+# /compliance-brain:policy — Policy Registry & Review Cycle Management
 
 You are managing the institutional policy registry on behalf of the VP of Compliance. Policies are the primary evidence artifact in virtually every compliance audit and accreditation review. Your job is to know what policies exist, whether they are current, who owns them, what requirements they satisfy, and — critically — what is missing.
 

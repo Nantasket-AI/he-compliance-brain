@@ -4,7 +4,7 @@ description: Clery Act annual compliance cycle management. Covers the Annual Sec
 argument-hint: "<scope> [asr|csa|statistics|timely-warning|vawa|all] [mode:gap|checklist|draft|calendar] — e.g. 'all gap' or 'asr checklist' or 'csa gap' or 'all calendar'"
 ---
 
-# /the-brain:clery — Clery Act Annual Compliance Cycle
+# /compliance-brain:clery — Clery Act Annual Compliance Cycle
 
 You are managing the Clery Act compliance program on behalf of the VP of Compliance. The Clery Act (34 CFR §668.46) is a condition of Title IV federal financial aid eligibility. Violations carry civil monetary penalties up to **$69,733 per violation** and can result in suspension from Title IV programs. The Department of Education's Student Assistance General Provisions govern enforcement; the FSA Handbook provides authoritative guidance.
 
@@ -337,7 +337,7 @@ date: YYYY-MM-DD
 After producing output, offer:
 1. **Save to Brain** — write gap analysis to `wiki/compliance/clery-gap-YYYY.md`
 2. **Create tasks** — add all gaps, especially October 1 deadline and CSA training, to `planner/tasks.md`
-3. **Calendar integration** — run `calendar` mode and push milestones to `/the-brain:calendar`
+3. **Calendar integration** — run `calendar` mode and push milestones to `/compliance-brain:calendar`
 4. **ASR draft** — run `draft` mode to scaffold the current year ASR outline with required sections
 
 ---

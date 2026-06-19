@@ -4,7 +4,7 @@ description: Compliance risk register management. Builds and maintains the insti
 argument-hint: "<scope> [all|domain:<domain>|risk:<id>] [mode:register|update|rate|treat|report|heat-map] — e.g. 'all register' or 'domain:RESEARCH rate' or 'risk:RISK-014 treat' or 'all heat-map'"
 ---
 
-# /the-brain:risk — Compliance Risk Register
+# /compliance-brain:risk — Compliance Risk Register
 
 You are building and managing the institutional compliance risk register on behalf of the VP of Compliance. The risk register is the authoritative record of what could go wrong, how likely it is, how bad it would be, what controls exist to prevent it, and what the institution is doing about it. A well-maintained risk register is evidence of a mature compliance program — regulators and accreditors increasingly expect to see one.
 
@@ -114,16 +114,16 @@ Pull risks from the following sources in the Brain:
 
 ### Domain skill outputs
 Run each domain skill in `gap` mode and extract findings rated 🔴 or 🟠 as candidate risk register entries:
-- `/the-brain:compliance` — general regulatory risk
-- `/the-brain:titleix` — Title IX compliance risks
-- `/the-brain:clery` — Clery Act risks
-- `/the-brain:coi` — FCOI/COI risks
-- `/the-brain:research` — research compliance risks
-- `/the-brain:acgme` — GME/ACGME risks
-- `/the-brain:lcme` — LCME risks
-- `/the-brain:msche` — MSCHE risks
-- `/the-brain:training` — training compliance risks
-- `/the-brain:policy` — policy gaps as governance risks
+- `/compliance-brain:compliance` — general regulatory risk
+- `/compliance-brain:titleix` — Title IX compliance risks
+- `/compliance-brain:clery` — Clery Act risks
+- `/compliance-brain:coi` — FCOI/COI risks
+- `/compliance-brain:research` — research compliance risks
+- `/compliance-brain:acgme` — GME/ACGME risks
+- `/compliance-brain:lcme` — LCME risks
+- `/compliance-brain:msche` — MSCHE risks
+- `/compliance-brain:training` — training compliance risks
+- `/compliance-brain:policy` — policy gaps as governance risks
 
 ### Brain PM sub-brain
 - `pm/reports/` — prior audit findings; each unresolved finding is a candidate risk
@@ -131,8 +131,8 @@ Run each domain skill in `gap` mode and extract findings rated 🔴 or 🟠 as c
 - `pm/notes/` — compliance officer observations
 
 ### External signals
-- `/the-brain:reg-monitor` output — new regulatory requirements = new or changed risks
-- `/the-brain:audit` escalation outputs — audit responses reveal risk exposure
+- `/compliance-brain:reg-monitor` output — new regulatory requirements = new or changed risks
+- `/compliance-brain:audit` escalation outputs — audit responses reveal risk exposure
 
 ---
 
@@ -354,9 +354,9 @@ period: <quarter or annual>
 After producing output, offer:
 1. **Save register** — write/update `wiki/compliance/risk-register.md`
 2. **Create treatment tasks** — add all High/Critical treatment actions to `planner/tasks.md` with due dates and owners
-3. **Board report** — run `/the-brain:board-report` to package this risk summary into a board compliance report
+3. **Board report** — run `/compliance-brain:board-report` to package this risk summary into a board compliance report
 4. **Domain drill-down** — for any domain with multiple High/Critical risks, offer to run the domain skill in `gap` mode for a deeper look
-5. **Calendar** — schedule the next quarterly risk review in `/the-brain:calendar`
+5. **Calendar** — schedule the next quarterly risk review in `/compliance-brain:calendar`
 
 ---
 
@@ -367,4 +367,4 @@ After producing output, offer:
 - **Never conflate inherent risk with residual risk** — always record both: what the risk is before controls, and what it is after current controls are applied.
 - **"Accepted" is a legitimate treatment status** — for Low and some Medium risks, formal acceptance with documentation is appropriate and more honest than a treatment plan no one will implement.
 - **Risk owners must be roles, not individuals** — people change roles; the risk register must survive those transitions.
-- **Regulatory changes automatically reopen risks** — when `/the-brain:reg-monitor` identifies a new or changed requirement, check whether it creates or modifies any existing risk register entries.
+- **Regulatory changes automatically reopen risks** — when `/compliance-brain:reg-monitor` identifies a new or changed requirement, check whether it creates or modifies any existing risk register entries.

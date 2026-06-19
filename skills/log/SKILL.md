@@ -4,11 +4,11 @@ description: Log what you've been working on to today's daily plan. Reads your d
 argument-hint: <description of what you worked on (optional)>
 ---
 
-# /the-brain:log — Activity Log
+# /compliance-brain:log — Activity Log
 
 Ships with the the-brain plugin; available wherever the plugin is enabled.
 
-Update today's daily planner file with a summary of what was worked on. Reads the user's description AND the current Claude Code conversation context to build a rich, specific log entry. This makes daily files serve as both prospective plans and retrospective logs — useful for `/the-brain:standup`, `/the-brain:reflect`, and general accountability.
+Update today's daily planner file with a summary of what was worked on. Reads the user's description AND the current Claude Code conversation context to build a rich, specific log entry. This makes daily files serve as both prospective plans and retrospective logs — useful for `/compliance-brain:standup`, `/compliance-brain:reflect`, and general accountability.
 
 ## Brain location
 
@@ -28,7 +28,7 @@ All Brain file paths below are relative to the Brain root once located.
 Calculate today's date and resolve the file path: `planner/YYYY/MM/YYYY-MM-DD.md`.
 
 - If the directory (`planner/YYYY/MM/`) doesn't exist, create it.
-- If the daily file doesn't exist yet (e.g., `/the-brain:myday` hasn't run today), create a minimal stub:
+- If the daily file doesn't exist yet (e.g., `/compliance-brain:myday` hasn't run today), create a minimal stub:
 
 ```yaml
 ---
@@ -73,7 +73,7 @@ Synthesize a log entry from **two sources**:
   - **Connector interactions** — Jira tickets updated, emails sent, calendar changes, Teams messages
   - **Decisions made** — architectural choices, approach changes, problem resolutions
   - **Problems encountered and solved** — bugs found, blockers hit, workarounds applied
-  - **Skills invoked** — `/the-brain:ingest`, `/the-brain:sync`, `/the-brain:lint`, etc. and their outcomes
+  - **Skills invoked** — `/compliance-brain:ingest`, `/compliance-brain:sync`, `/compliance-brain:lint`, etc. and their outcomes
   - **Brain operations** — pages created, indexes updated, knowledge filed
   - **Code written** — features implemented, refactors completed, tests added
 - If the conversation was in a **different repo** (not the Brain), note the repo and what was done there
@@ -121,7 +121,7 @@ Update the `updated:` field in the daily file's frontmatter to today's date.
 
 - **If tasks.md was updated** (tasks marked done or added), append to `log.md`:
   ```
-  ## [YYYY-MM-DD] system | Tasks updated via /the-brain:log
+  ## [YYYY-MM-DD] system | Tasks updated via /compliance-brain:log
   Tasks completed: N. Tasks added: N. Updated [[planner/tasks]].
   ```
 - **If no Brain pages were changed** (only the daily file's Activity Log was appended to), do NOT append to `log.md`. The daily file update is a personal log, not a Brain structural change.
@@ -132,7 +132,7 @@ Output a brief confirmation to the user:
 - What was logged (summary)
 - Which file was updated
 - Any tasks marked complete or added
-- Reminder: "Run `/the-brain:reflect` at end of day to synthesize plan vs. actual."
+- Reminder: "Run `/compliance-brain:reflect` at end of day to synthesize plan vs. actual."
 
 ## Outside the Brain repo
 
@@ -140,13 +140,13 @@ When no Brain directory is found (neither cwd nor `${user_config.brain_path}` re
 
 1. Still build the log entry from conversation context + user description (Steps 3's synthesis)
 2. Output the formatted log entry to chat
-3. Note: "Not in Brain — log entry shown but not filed. To persist, run `/the-brain:log` from a Brain directory or with `brain_path` configured, or copy this entry manually."
+3. Note: "Not in Brain — log entry shown but not filed. To persist, run `/compliance-brain:log` from a Brain directory or with `brain_path` configured, or copy this entry manually."
 4. If the work is clearly related to a Brain project (e.g., working in a tracked project's repo), mention which project and suggest logging when back in the Brain.
 
 ## Tips for users
 
-- Run `/the-brain:log` whenever you switch contexts (finishing a coding session, before a meeting, at end of day)
-- A quick `/the-brain:log fixed the auth bug in my-service` is better than nothing — the skill will enrich it from conversation context
-- Running `/the-brain:log` with no argument works fine — it reads the conversation
-- Multiple `/the-brain:log` entries per day are expected and encouraged — they append, never overwrite
-- The Activity Log feeds directly into `/the-brain:standup` (yesterday's work) and `/the-brain:reflect` (end of day/week synthesis)
+- Run `/compliance-brain:log` whenever you switch contexts (finishing a coding session, before a meeting, at end of day)
+- A quick `/compliance-brain:log fixed the auth bug in my-service` is better than nothing — the skill will enrich it from conversation context
+- Running `/compliance-brain:log` with no argument works fine — it reads the conversation
+- Multiple `/compliance-brain:log` entries per day are expected and encouraged — they append, never overwrite
+- The Activity Log feeds directly into `/compliance-brain:standup` (yesterday's work) and `/compliance-brain:reflect` (end of day/week synthesis)

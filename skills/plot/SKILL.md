@@ -3,7 +3,7 @@ name: plot
 description: Generate planner daily files for the full Mon–Fri work week. Synthesizes Brain knowledge (projects, action items, tasks, entity context) with live connector data (calendar, Jira, Teams, email) into rich, context-aware daily plans.
 ---
 
-# /the-brain:plot — Plot the Week
+# /compliance-brain:plot — Plot the Week
 
 Generate or update planner daily files for every day of the current Mon–Fri work week. This skill synthesizes **local Brain knowledge** (project state, decisions, action items, entity context, tasks, goals) with **live connector data** (Outlook calendar, Jira, Teams, email) to produce daily plans that are aware of the full project narrative — not just calendar events.
 
@@ -66,17 +66,17 @@ Before generating individual day files, build a **week-level picture**:
 For each day in the work week, apply the following logic:
 
 ### Past days (before today) with existing daily files
-**Skip** — do not overwrite the Activity Log or End-of-Day Summary that `/the-brain:reflect` may have filled in. Exception: if calendar events have changed (cancellations, new meetings), update only the Schedule section.
+**Skip** — do not overwrite the Activity Log or End-of-Day Summary that `/compliance-brain:reflect` may have filled in. Exception: if calendar events have changed (cancellations, new meetings), update only the Schedule section.
 
 ### Today
-Create or update the daily file with **full detail** — equivalent to `/the-brain:myday` output:
+Create or update the daily file with **full detail** — equivalent to `/compliance-brain:myday` output:
 - **Schedule**: all calendar events with times, attendees (wikilinked to `[[wiki/entities/...]]`), location
 - **Priorities**: top 3–5 items drawn from tasks, project state, and deadlines
 - **Tasks for Today**: specific tasks distributed from the week-level picture
 - **Meeting Prep**: detailed per-meeting sections with project context, recent decisions, open questions, talking points, attendee entity links
 - **Looking Ahead**: table of remaining week
-- **Activity Log**: placeholder (appended by `/the-brain:log` throughout the day)
-- **End-of-Day Summary**: placeholder (filled by `/the-brain:reflect`)
+- **Activity Log**: placeholder (appended by `/compliance-brain:log` throughout the day)
+- **End-of-Day Summary**: placeholder (filled by `/compliance-brain:reflect`)
 
 ### Future days
 Create or update the daily file with **forward-looking detail**:

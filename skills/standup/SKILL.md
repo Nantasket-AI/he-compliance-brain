@@ -3,7 +3,7 @@ name: standup
 description: Generate a standup summary. Reviews yesterday's activity, completed and in-progress tasks, and blockers. Produces a concise update for your next standup meeting plus a plan for today.
 ---
 
-# /the-brain:standup — Standup Summary
+# /compliance-brain:standup — Standup Summary
 
 Ships with the the-brain plugin; available wherever the plugin is enabled.
 
@@ -28,7 +28,7 @@ Read local Brain state to build a complete picture of yesterday and today:
 
 - Read yesterday's daily file in `planner/YYYY/MM/` — Activity Log, End-of-Day Summary, tasks that were planned
 - Read `log.md` entries from yesterday — every operation that changed the Brain (ingests, syncs, queries, system changes)
-- Read today's daily file in `planner/YYYY/MM/` if `/the-brain:myday` already ran — today's planned tasks and priorities
+- Read today's daily file in `planner/YYYY/MM/` if `/compliance-brain:myday` already ran — today's planned tasks and priorities
 - Read `planner/tasks.md` — active tasks (what's in progress), blocked tasks (what's stuck), maintenance tasks
 - Read `planner/goals.md` — check if any goal milestones were hit or are approaching
 - Read `pm/overview.md` — active project state for framing

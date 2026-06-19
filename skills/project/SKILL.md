@@ -4,7 +4,7 @@ description: View or create a project in the PM brain. Shows compiled project st
 argument-hint: "<project-name> or 'new <project-name>'"
 ---
 
-# /the-brain:project — Project Operations
+# /compliance-brain:project — Project Operations
 
 View, create, or list projects in the PM brain. Each mode synthesizes Brain knowledge with live connector data to give a complete picture.
 
@@ -135,4 +135,4 @@ Output a summary of everything created, with `[[wikilinks]]` to each page. Sugge
 1. Read `pm/index.md` — present all projects organized by status (active, paused, completed)
 2. For each active project, include: name, status, phase, last updated date, next milestone or meeting
 3. Flag any projects that haven't been updated in 2+ weeks
-4. Suggest running `/the-brain:sync` if any projects look stale
+4. Suggest running `/compliance-brain:sync` if any projects look stale

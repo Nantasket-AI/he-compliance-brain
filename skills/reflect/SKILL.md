@@ -4,7 +4,7 @@ description: Generate a reflection on recent activity. Reviews daily logs, wiki 
 argument-hint: "<day|week>"
 ---
 
-# /the-brain:reflect — Metacognition
+# /compliance-brain:reflect — Metacognition
 
 You are generating a reflection on recent Brain activity.
 

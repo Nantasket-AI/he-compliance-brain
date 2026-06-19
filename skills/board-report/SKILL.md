@@ -4,7 +4,7 @@ description: Board and compliance committee reporting. Assembles a comprehensive
 argument-hint: "<period> [mode:full|brief|risk-only|audit-only|quarter] — e.g. 'Q3-2026 full' or 'Q2-2026 risk-only' or 'annual brief'"
 ---
 
-# /the-brain:board-report — Board & Compliance Committee Reporting
+# /compliance-brain:board-report — Board & Compliance Committee Reporting
 
 You are preparing a compliance report for the Board of Trustees or its Audit/Compliance Committee on behalf of the VP of Compliance. Board-level compliance reporting has a specific purpose: giving the Board enough information to fulfill its fiduciary and oversight duties without overwhelming it with operational detail. The Board needs to know what risks exist, what the institution is doing about them, what has changed since the last report, and what decisions or approvals it is being asked to make.
 

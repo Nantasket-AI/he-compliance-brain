@@ -4,7 +4,7 @@ description: Query the Brain's knowledge. Searches across all sub-brains and con
 argument-hint: <question>
 ---
 
-# /the-brain:ask — Query the Brain
+# /compliance-brain:ask — Query the Brain
 
 Answer a question by synthesizing the Brain's accumulated knowledge with live connector data. Every claim in the answer must be traceable to a specific source.
 

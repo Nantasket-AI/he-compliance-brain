@@ -4,7 +4,7 @@ description: Conflicts of Interest (COI) and Financial Conflicts of Interest (FC
 argument-hint: "<scope> [fcoi|board|procurement|all] [mode:status|gap|manage|audit|brief] — e.g. 'fcoi status' or 'all gap' or 'fcoi manage PI:Smith' or 'fcoi audit'"
 ---
 
-# /the-brain:coi — Conflicts of Interest & FCOI Compliance
+# /compliance-brain:coi — Conflicts of Interest & FCOI Compliance
 
 You are managing COI and FCOI compliance on behalf of the VP of Compliance. Conflicts of interest — particularly financial conflicts in federally funded research — are a persistent audit target for OIG and NIH. Inadequate disclosure systems, missing management plans, and undocumented retrospective reviews have resulted in enforcement actions at peer institutions.
 
@@ -282,7 +282,7 @@ After producing output, offer:
 1. **Save to Brain** — write status report to `wiki/compliance/coi-status-YYYY-MM-DD.md`
 2. **Management plan** — run `manage` mode for any investigator with an active SFI requiring a plan
 3. **Calendar integration** — flag annual disclosure deadline and training renewal dates in `planner/tasks.md`
-4. **Policy** — if FCOI policy is missing or stale, offer to run `/the-brain:policy new FCOI`
+4. **Policy** — if FCOI policy is missing or stale, offer to run `/compliance-brain:policy new FCOI`
 
 ---
 

@@ -3,7 +3,7 @@ name: myday
 description: Generate a daily briefing with schedule, priorities, and context. Pulls from calendar, tasks, goals, and project state. Use first thing in the morning to plan the day.
 ---
 
-# /the-brain:myday — Daily Briefing
+# /compliance-brain:myday — Daily Briefing
 
 Ships with the the-brain plugin; available wherever the plugin is enabled.
 
@@ -43,7 +43,7 @@ Read local Brain state to understand what's active, what's pending, and what his
 
 ### Step 2: Gather live state from connectors
 
-Query external systems for current data (this runs **after** `/the-brain:sync` in Step 3b, so project pages are already updated):
+Query external systems for current data (this runs **after** `/compliance-brain:sync` in Step 3b, so project pages are already updated):
 
 - **Outlook calendar**: today's events — time, attendees, subject, location
 - **Jira**: tickets assigned to user — recent updates, approaching deadlines, sprint state
@@ -64,33 +64,33 @@ Before generating the daily plan, build a **picture of the day** by combining Br
 
 ### Step 3b: Daily sync + day-of-week maintenance
 
-**Every day (Mon–Fri)**: Invoke `/the-brain:sync` first, before anything else.
-- **`/the-brain:sync`**: Query live connectors (Jira, calendar, Teams) for all active projects. Flag drift between connector state and Brain pages. Update project pages to match.
+**Every day (Mon–Fri)**: Invoke `/compliance-brain:sync` first, before anything else.
+- **`/compliance-brain:sync`**: Query live connectors (Jira, calendar, Teams) for all active projects. Flag drift between connector state and Brain pages. Update project pages to match.
 - This ensures all subsequent steps (plan generation, dashboard, briefing) use current data.
 
 Then check today's day of the week for additional maintenance:
 
-**If Monday** (after sync): Invoke `/the-brain:lint`, then `/the-brain:plot`.
-1. **`/the-brain:lint`**: Perform the full lint health check (index integrity, orphans, broken anchors, stale content, overdue action items, cross-brain gaps, archive candidates). Apply auto-fixes. Resolve any errors before proceeding. Carry unresolved issues forward as tasks.
-2. **`/the-brain:plot`**: Generate or update planner daily files for the full Mon–Fri work week. Synthesizes Brain knowledge (project state, action items, tasks, entity context) with live connector data (calendar, Jira, Teams, email). Distributes tasks across the week, maps meetings to projects, flags dependencies.
-3. Then proceed with regular `/the-brain:myday` steps (Step 4 onward) for today.
+**If Monday** (after sync): Invoke `/compliance-brain:lint`, then `/compliance-brain:plot`.
+1. **`/compliance-brain:lint`**: Perform the full lint health check (index integrity, orphans, broken anchors, stale content, overdue action items, cross-brain gaps, archive candidates). Apply auto-fixes. Resolve any errors before proceeding. Carry unresolved issues forward as tasks.
+2. **`/compliance-brain:plot`**: Generate or update planner daily files for the full Mon–Fri work week. Synthesizes Brain knowledge (project state, action items, tasks, entity context) with live connector data (calendar, Jira, Teams, email). Distributes tasks across the week, maps meetings to projects, flags dependencies.
+3. Then proceed with regular `/compliance-brain:myday` steps (Step 4 onward) for today.
 4. Note in the briefing: "🔄 Sync ran. 🔧 Lint ran — N issues, N fixed. 📅 Week plotted (Mon–Fri)."
 
 **If Tuesday–Thursday** (after sync): No extra steps.
-- Proceed directly with regular `/the-brain:myday` steps (Step 4 onward).
+- Proceed directly with regular `/compliance-brain:myday` steps (Step 4 onward).
 - Note in the briefing: "🔄 Sync ran."
 
-**If Friday** (after sync): Invoke `/the-brain:reflect` after generating the daily plan (Step 4), before updating the dashboard (Step 5).
-- **`/the-brain:reflect`**: Review the week's activity from `log.md` and the week's daily files. Prune completed tasks from `planner/tasks.md`. Promote genuine insights to permanent wiki/pm knowledge. Generate the weekly reflection entry in `planner/YYYY/MM/week-WW.md`.
+**If Friday** (after sync): Invoke `/compliance-brain:reflect` after generating the daily plan (Step 4), before updating the dashboard (Step 5).
+- **`/compliance-brain:reflect`**: Review the week's activity from `log.md` and the week's daily files. Prune completed tasks from `planner/tasks.md`. Promote genuine insights to permanent wiki/pm knowledge. Generate the weekly reflection entry in `planner/YYYY/MM/week-WW.md`.
 - Note in the briefing: "🔄 Sync ran. 🪞 Reflect ran — tasks pruned, insights filed."
 
 ### Execution order summary
 
 | Day | Order |
 |-----|-------|
-| Monday | /the-brain:sync → /the-brain:lint → /the-brain:plot → /the-brain:myday |
-| Tue–Thu | /the-brain:sync → /the-brain:myday |
-| Friday | /the-brain:sync → /the-brain:myday → /the-brain:reflect |
+| Monday | /compliance-brain:sync → /compliance-brain:lint → /compliance-brain:plot → /compliance-brain:myday |
+| Tue–Thu | /compliance-brain:sync → /compliance-brain:myday |
+| Friday | /compliance-brain:sync → /compliance-brain:myday → /compliance-brain:reflect |
 
 ### Step 4: Generate daily plan
 
@@ -109,8 +109,8 @@ Create or update `planner/YYYY/MM/YYYY-MM-DD.md` using the Daily template. The p
   - Talking points drawn from Brain knowledge
   - Link to existing prep doc if one exists in `pm/prep/`
 - **Looking Ahead**: table of rest-of-week events, deadlines, and dependencies
-- **Activity Log**: placeholder (appended by `/the-brain:log`)
-- **End-of-Day Summary**: placeholder (filled by `/the-brain:reflect`)
+- **Activity Log**: placeholder (appended by `/compliance-brain:log`)
+- **End-of-Day Summary**: placeholder (filled by `/compliance-brain:reflect`)
 
 Use `[[wikilinks]]` throughout — every person links to their entity, every meeting links to its project, every task links to its source.
 

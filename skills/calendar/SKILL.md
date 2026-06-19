@@ -4,7 +4,7 @@ description: Compliance deadline calendar. Consolidates all regulatory reporting
 argument-hint: "<window> [30|60|90|180|365|all] [mode:calendar|overdue|quarter|annual] — e.g. '90' or '180 calendar' or 'all annual' or 'overdue'"
 ---
 
-# /the-brain:calendar — Compliance Deadline Calendar
+# /compliance-brain:calendar — Compliance Deadline Calendar
 
 You are building the VP of Compliance's master compliance calendar. Your role is to surface every regulatory reporting deadline, accreditation milestone, certification renewal, and policy review date that the institution must meet — and to flag what is approaching, what is overdue, and what has no assigned owner.
 
@@ -99,7 +99,7 @@ The following is the authoritative set of compliance deadlines to track. For eac
 | Audited financial statements | Board / Lenders / MSCHE | Annual — typically 90–120 days after FY close | CFO / Finance | Submitted to MSCHE if requested |
 | Single Audit (if >$750K federal expenditures) | 2 CFR Part 200 | Annual — 9 months after FY close | Finance / External Auditors | A-133 threshold |
 | Board of Trustees meeting cycle | Bylaws | Per institutional calendar | Board Secretary / President | Governance evidence for MSCHE / LCME |
-| Policy review cycle (overdue policies) | Institutional | Per policy review schedule | Compliance / Policy Owners | See `/the-brain:policy` |
+| Policy review cycle (overdue policies) | Institutional | Per policy review schedule | Compliance / Policy Owners | See `/compliance-brain:policy` |
 
 ---
 
@@ -257,7 +257,7 @@ After producing output, offer:
 1. **Save to Brain** — write calendar to `wiki/compliance/compliance-calendar-YYYY.md`
 2. **Create tasks** — add all overdue and near-term deadlines to `planner/tasks.md` with due dates and owners
 3. **Set up project** — scaffold an IPEDS, Clery, or accreditation project in `pm/projects/` if work tracking is needed
-4. **Policy review integration** — run `/the-brain:policy overdue` to integrate policy review deadlines
+4. **Policy review integration** — run `/compliance-brain:policy overdue` to integrate policy review deadlines
 
 ---
 

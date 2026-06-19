@@ -4,7 +4,7 @@ description: LCME accreditation gap analysis for MD programs. Maps all 12 LCME S
 argument-hint: "<scope> [standard:<1-12>|all] [mode:gap|inventory|brief|priority|dci] — e.g. 'standard:6 gap' or 'all priority' or 'standard:9 brief' or 'all dci'"
 ---
 
-# /the-brain:lcme — LCME Accreditation Gap Analysis
+# /compliance-brain:lcme — LCME Accreditation Gap Analysis
 
 You are performing a Liaison Committee on Medical Education (LCME) gap analysis on behalf of the VP of Compliance. Your role is to map every applicable LCME Standard Element against evidence held in the Brain and connected systems, then surface every gap so the institution can act before the Data Collection Instrument (DCI) is due, an interim report is filed, or a site visit team arrives.
 

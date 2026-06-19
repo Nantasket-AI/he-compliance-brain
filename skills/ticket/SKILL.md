@@ -4,7 +4,7 @@ description: "Create or update a Jira ticket grounded in Brain knowledge. Pulls 
 argument-hint: "<action> <description> — e.g. 'create story for webhook integration' or 'update PROJ-117 with discovery findings'"
 ---
 
-# /the-brain:ticket — Draft a Jira Ticket from Brain Context
+# /compliance-brain:ticket — Draft a Jira Ticket from Brain Context
 
 Create or update a Jira ticket that is grounded in the Brain's accumulated knowledge — project decisions, meeting outcomes, action items, architecture context, and live connector state. The ticket should be thorough enough that any team member can understand the work without digging through meetings or chat history.
 
@@ -119,6 +119,6 @@ After successful Jira interaction:
 Append to `log.md`:
 
 ```
-## [YYYY-MM-DD] system | /the-brain:ticket — [created/updated] [TICKET-KEY]
+## [YYYY-MM-DD] system | /compliance-brain:ticket — [created/updated] [TICKET-KEY]
 [Created/Updated] [issue type] in [project]. Summary: "[title]". Grounded in [[project-page]], [[meeting-page]]. [Assigned to: Name].
 ```

@@ -4,7 +4,7 @@ description: Mandatory compliance training tracker. Inventories all required com
 argument-hint: "<scope> [all|domain:<domain>|role:<role>|program:<name>] [mode:status|gap|report|schedule] — e.g. 'all status' or 'domain:research gap' or 'role:faculty status' or 'program:HIPAA report'"
 ---
 
-# /the-brain:training — Mandatory Compliance Training Tracker
+# /compliance-brain:training — Mandatory Compliance Training Tracker
 
 You are auditing mandatory compliance training on behalf of the VP of Compliance. Training completion is the single most frequently requested documentation artifact in compliance audits — MSCHE, LCME, ACGME, OCR, OIG, NIH, and FSA auditors all ask for it. An institution that cannot demonstrate who was trained, on what, when, and by whom is at significant audit risk even if underlying policies are sound.
 
@@ -52,7 +52,7 @@ The following programs represent the required compliance training portfolio for 
 | Responsible Conduct of Research (RCR) | NIH NOT-OD-10-019 | Graduate students, postdocs, junior faculty on NIH training grants | Per NIH requirements; at least once | Required for NIH T and F awards |
 | Export controls awareness | EAR / ITAR; institutional policy | Faculty and staff in affected labs/projects | Annual or upon assignment | |
 | Biosafety / IBC | NIH Guidelines | Personnel working with rDNA, biological agents | Before initiation + annual | |
-| FCOI / COI training | 42 CFR §50.604(c) | All Investigators on PHS-funded research | Before beginning PHS research; every 4 years; upon policy change | See `/the-brain:coi` |
+| FCOI / COI training | 42 CFR §50.604(c) | All Investigators on PHS-funded research | Before beginning PHS research; every 4 years; upon policy change | See `/compliance-brain:coi` |
 
 ### Title IX and Civil Rights Training
 
@@ -317,9 +317,9 @@ date: YYYY-MM-DD
 After producing output, offer:
 1. **Save to Brain** — write status report to `wiki/compliance/training-status-YYYY-MM-DD.md`
 2. **Create tasks** — add overdue and near-term training programs as tasks in `planner/tasks.md`
-3. **Calendar integration** — push annual training schedule to `/the-brain:calendar`
+3. **Calendar integration** — push annual training schedule to `/compliance-brain:calendar`
 4. **Audit package** — if an audit is approaching, run `report` mode for each program the auditor has requested
-5. **Gap follow-up** — for FCOI training gaps, escalate via `/the-brain:coi`; for IRB training gaps, escalate via `/the-brain:research`
+5. **Gap follow-up** — for FCOI training gaps, escalate via `/compliance-brain:coi`; for IRB training gaps, escalate via `/compliance-brain:research`
 
 ---
 

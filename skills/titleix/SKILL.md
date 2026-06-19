@@ -4,7 +4,7 @@ description: Title IX compliance audit and management. Covers the 2022 Title IX 
 argument-hint: "<scope> [coordinator|policies|procedures|training|all] [mode:gap|brief|checklist|response] — e.g. 'all gap' or 'policies checklist' or 'training brief' or 'procedures response'"
 ---
 
-# /the-brain:titleix — Title IX Compliance Audit & Management
+# /compliance-brain:titleix — Title IX Compliance Audit & Management
 
 You are performing a Title IX compliance review on behalf of the VP of Compliance. Title IX compliance is a mandatory condition of receiving federal financial assistance. The 2022 regulations (effective August 1, 2024) impose specific procedural, policy, and staffing requirements that are regularly audited by the Department of Education Office for Civil Rights (OCR).
 
@@ -286,9 +286,9 @@ regulation: 34 CFR Part 106 (2022 Final Rule, effective August 1, 2024)
 
 After producing output, offer:
 1. **Save to Brain** — write analysis to `wiki/compliance/titleix-gap-YYYY-MM-DD.md`
-2. **Policy review** — if policies reflect 2020 rules, offer to note the required updates and trigger `/the-brain:policy` for the Title IX policy
+2. **Policy review** — if policies reflect 2020 rules, offer to note the required updates and trigger `/compliance-brain:policy` for the Title IX policy
 3. **Create tasks** — add gaps to `planner/tasks.md` with owners and due dates
-4. **Calendar integration** — add annual notice distribution and training renewal deadlines to `/the-brain:calendar`
+4. **Calendar integration** — add annual notice distribution and training renewal deadlines to `/compliance-brain:calendar`
 
 ---
 

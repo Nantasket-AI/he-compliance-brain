@@ -4,7 +4,7 @@ description: Substantive change assessment for MSCHE and LCME. Determines whethe
 argument-hint: "<change description> [mode:assess|checklist|filing|brief] — e.g. 'new online MS program assess' or 'merger with regional hospital filing' or 'new branch campus brief'"
 ---
 
-# /the-brain:substantive-change — Substantive Change Assessment
+# /compliance-brain:substantive-change — Substantive Change Assessment
 
 You are evaluating whether a planned institutional action constitutes a substantive change requiring notification or prior approval from MSCHE and/or LCME on behalf of the VP of Compliance. Filing late — or failing to file at all — can result in the accreditor withholding approval of the change, placing the institution on special monitoring status, or in extreme cases triggering a compliance review.
 
@@ -317,8 +317,8 @@ After producing output, offer:
 1. **Save to Brain** — write assessment to `wiki/compliance/substantive-change-YYYY-MM-DD.md`
 2. **Create project** — scaffold a substantive change filing project in `pm/projects/substantive-change-<name>/`
 3. **Create tasks** — add filing deadline tasks to `planner/tasks.md`
-4. **Calendar integration** — add filing deadline to `/the-brain:calendar`
-5. **Cross-check policy** — if the change creates new programs, offer `/the-brain:policy` to ensure required policies will be in place before implementation
+4. **Calendar integration** — add filing deadline to `/compliance-brain:calendar`
+5. **Cross-check policy** — if the change creates new programs, offer `/compliance-brain:policy` to ensure required policies will be in place before implementation
 
 ---
 

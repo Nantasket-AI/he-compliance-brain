@@ -1,12 +1,12 @@
 ---
 name: met
-description: Meeting transcript acquisition. Finds a meeting in Outlook/Teams by description, pulls the transcript via connector, processes it in-context, saves a connector-reference stub to raw/, and invokes /the-brain:ingest processing. Use after any meeting you want captured.
+description: Meeting transcript acquisition. Finds a meeting in Outlook/Teams by description, pulls the transcript via connector, processes it in-context, saves a connector-reference stub to raw/, and invokes /compliance-brain:ingest processing. Use after any meeting you want captured.
 argument-hint: <brief meeting description — name, person, date, any identifying detail>
 ---
 
-# /the-brain:met — Meeting Transcript Acquisition + Ingest
+# /compliance-brain:met — Meeting Transcript Acquisition + Ingest
 
-Given a brief description of a meeting (e.g., "design review call last Thursday", "my 1:1 with Alex today", "the standup from yesterday"), locate it in Outlook/Teams, fetch the transcript into context, create a connector-reference stub in `raw/`, and invoke `/the-brain:ingest` to process it into the Brain.
+Given a brief description of a meeting (e.g., "design review call last Thursday", "my 1:1 with Alex today", "the standup from yesterday"), locate it in Outlook/Teams, fetch the transcript into context, create a connector-reference stub in `raw/`, and invoke `/compliance-brain:ingest` to process it into the Brain.
 
 This skill is the **acquisition layer** — it handles finding and fetching. The transcript stays **in-context only** and feeds ingest processing; it is never written to disk. A lightweight connector-reference stub (not the transcript body) is what lands in `raw/`.
 
@@ -105,13 +105,13 @@ If the transcript was provided by user paste (fallback path), note it: add a lin
 
 **Do not write the transcript body to raw/ or any other file.** The stub is the only artifact written to disk.
 
-## Step 7: Invoke /the-brain:ingest
+## Step 7: Invoke /compliance-brain:ingest
 
-Hand off to the `/the-brain:ingest` skill. The stub file is already created and correctly named (Steps 1-2 of `/the-brain:ingest` can be skipped). The transcript text is in context.
+Hand off to the `/compliance-brain:ingest` skill. The stub file is already created and correctly named (Steps 1-2 of `/compliance-brain:ingest` can be skipped). The transcript text is in context.
 
-**Context to pass**: The stub is at `raw/YYYY-MM-DD-slug.ref.md`. The source type is a meeting transcript. The attendee list and meeting metadata are in the stub. The transcript content is in context — start at `/the-brain:ingest` Step 3 (discuss with user) and proceed with processing using the in-context transcript.
+**Context to pass**: The stub is at `raw/YYYY-MM-DD-slug.ref.md`. The source type is a meeting transcript. The attendee list and meeting metadata are in the stub. The transcript content is in context — start at `/compliance-brain:ingest` Step 3 (discuss with user) and proceed with processing using the in-context transcript.
 
-The `/the-brain:ingest` skill handles all downstream processing:
+The `/compliance-brain:ingest` skill handles all downstream processing:
 - Creates `pm/meetings/YYYY-MM-DD-slug.md` with decisions, topics, action items
 - Updates relevant `pm/projects/` pages (decisions flow upward)
 - Creates/updates `wiki/entities/` for attendees (with Meetings back-links)
@@ -123,7 +123,7 @@ The `/the-brain:ingest` skill handles all downstream processing:
 
 ## Step 8: Add meeting-specific metadata
 
-After `/the-brain:ingest` completes, add metadata that `/the-brain:ingest` doesn't handle:
+After `/compliance-brain:ingest` completes, add metadata that `/compliance-brain:ingest` doesn't handle:
 - Add the **Teams recording URL** to the meeting page (as `teams_vod:` in frontmatter and as an inline link) if a recording exists
 - Add the **Teams meeting join URL** for reference
 - Verify the meeting page's `attendees:` frontmatter matches the full calendar attendee list (ingest may have used only the transcript's speaker list, which can miss non-speaking attendees)
