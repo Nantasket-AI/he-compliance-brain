@@ -16,6 +16,8 @@ It installs as a Claude Code plugin. Every skill becomes a `/compliance-brain:<n
 
 **Confidential sub-brains** — Investigations case management, audit evidence locker, legal reference library, regulatory intelligence feed.
 
+**Proactive intelligence** — Weekly gap scan surfaces what's new and worsening without being asked. Change detection shows exactly what moved since last week. Effort-adjusted risk prioritization answers "what should I work on first?"
+
 **Planning and visualization** — Compliance program dashboard, Gantt-style roadmap, compliance deadline calendar, proactive reminder chains.
 
 ---
@@ -155,6 +157,13 @@ This is your morning command. It syncs connector state, surfaces deadline remind
 | `/compliance-brain:ticket` | Draft a Jira ticket grounded in Brain context (shows draft before creating) |
 | `/compliance-brain:compose` | Draft a message (email, Teams, Jira comment) from Brain context (shows draft before sending) |
 
+### Proactive Intelligence
+
+| Command | What It Does |
+|---------|-------------|
+| `/compliance-brain:scan` | Weekly proactive gap scan — sweeps all domains and surfaces only what is new or worsening since last scan, with a ranked priority list and quick wins called out. Runs automatically every Monday via myday. |
+| `/compliance-brain:delta` | Change detection — shows what moved since last week: risks up/down, deadlines slipped, projects changed status, training rates shifted. Trend mode shows multi-week direction of travel. |
+
 ### Planning & Visualization
 
 | Command | What It Does |
@@ -169,7 +178,7 @@ This is your morning command. It syncs connector state, surfaces deadline remind
 | Command | What It Does |
 |---------|-------------|
 | `/compliance-brain:compliance` | General regulatory compliance research and gap analysis |
-| `/compliance-brain:risk` | Compliance risk register — build, rate, treat, and report |
+| `/compliance-brain:risk` | Compliance risk register — rates risks by severity AND effort to remediate, derives a priority index (🔥 Act Now / ⚡ Quick Win / 📋 Plan / ⏳ Defer). New `prioritize` mode shows what to work on this quarter. |
 | `/compliance-brain:reg-monitor` | Regulatory intelligence — scan agency websites for new rules, guidance, enforcement actions |
 | `/compliance-brain:audit` | External audit response — corrective action plans, status tracking, escalation |
 | `/compliance-brain:policy` | Policy registry — inventory, gaps, overdue policies, draft new policies |

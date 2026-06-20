@@ -1,7 +1,7 @@
 ---
 name: risk
-description: Compliance risk register management. Builds and maintains the institution's compliance risk register — identifies risks from domain-specific gap analyses, rates each risk by likelihood and impact, assesses current controls, assigns risk owners, and tracks treatment plans. Produces a scored risk register, executive heat map narrative, and board-level risk summary. Use when building a new risk register, updating after an audit cycle, preparing a board risk report, or conducting an annual compliance risk assessment.
-argument-hint: "<scope> [all|domain:<domain>|risk:<id>] [mode:register|update|rate|treat|report|heat-map] — e.g. 'all register' or 'domain:RESEARCH rate' or 'risk:RISK-014 treat' or 'all heat-map'"
+description: Compliance risk register management. Builds and maintains the institution's compliance risk register — identifies risks, rates each by likelihood × impact × effort to remediate, derives an effort-adjusted priority index, assesses controls, assigns owners, and tracks treatment plans. Produces a scored risk register, priority stack, heat map, and board-level summary. Use when building a new risk register, updating after an audit cycle, prioritizing what to work on this quarter, or preparing a board risk report.
+argument-hint: "<scope> [all|domain:<domain>|risk:<id>] [mode:register|update|rate|treat|report|heat-map|prioritize] — e.g. 'all prioritize' or 'domain:RESEARCH rate' or 'risk:RISK-014 treat' or 'all heat-map'"
 ---
 
 # /compliance-brain:risk — Compliance Risk Register
@@ -24,10 +24,11 @@ From the user's input, determine:
 - **Mode**: output format — default to `register` if not specified:
   - `register` — read and present the full risk register (or domain subset); identify stale or missing entries
   - `update` — add new risks or update existing ones based on user input or domain skill output
-  - `rate` — score risks by likelihood × impact; produce the rated register with priority order
+  - `rate` — score risks by likelihood × impact AND effort to remediate; produce the full rated register
   - `treat` — develop or update treatment plans for specific risks
   - `report` — produce a compliance risk summary formatted for executive or board reporting
   - `heat-map` — produce a narrative risk heat map (textual table grid, not graphical) grouped by severity
+  - `prioritize` — rank the register by the effort-adjusted priority index; the VP's "what to work on first" view
 
 ---
 
@@ -57,6 +58,8 @@ Each risk entry must contain:
 | `treatment_status` | Not Started / In Progress / Complete / Accepted |
 | `last_reviewed` | Date this entry was last reviewed |
 | `next_review` | Date this entry should next be reviewed |
+| `effort_to_remediate` | Low / Medium / High — estimated effort to substantially close this risk (see scale below) |
+| `priority_index` | Derived from risk level + effort: 🔥 Act Now / ⚡ Quick Win / 📋 Plan / ⏳ Defer (see matrix below) |
 
 ---
 
@@ -105,6 +108,42 @@ Each risk entry must contain:
 | 12–19 | 🟠 High | Active treatment plan required; VP of Compliance owns; quarterly review |
 | 6–11 | 🟡 Medium | Treatment plan recommended; semi-annual review |
 | 1–5 | 🟢 Low | Accept or monitor; annual review |
+
+---
+
+## Effort-to-Remediate Scale
+
+How hard is it to substantially close this risk? Rate based on the most realistic treatment path — not the ideal one.
+
+| Label | Timeframe | What It Typically Means |
+|-------|-----------|------------------------|
+| **Low** | Days to weeks | Policy update already drafted; training module exists; one role responsible; no capital required; no external dependency |
+| **Medium** | 1–3 months | Requires cross-departmental coordination; some resourcing; new procedure development; vendor or system change; committee approval |
+| **High** | Quarter or more | Requires new hire or significant staffing; capital investment; regulatory approval; multi-year culture change; accreditor notification; legal process |
+
+**Rule**: When in doubt, rate effort one level higher. Underestimating effort is the most common mistake in compliance remediation planning.
+
+---
+
+## Priority Index Matrix
+
+Derived automatically from `risk_level` + `effort_to_remediate`. This is the VP's "what to work on first" view — it answers a different question than the risk score alone.
+
+|  | **Low Effort** | **Medium Effort** | **High Effort** |
+|--|---------------|------------------|----------------|
+| **🔴 Critical (20–25)** | 🔥 Act Now | 🔥 Act Now | 🔥 Act Now + Escalate |
+| **🟠 High (12–19)** | 🔥 Act Now | ⚡ Quick Win | 📋 Plan & Resource |
+| **🟡 Medium (6–11)** | ⚡ Quick Win | 📋 Plan | ⏳ Defer |
+| **🟢 Low (1–5)** | ⚡ Easy Win | ⏳ Defer | ⏳ Defer |
+
+**Priority index labels:**
+
+| Label | Meaning | Default Timeframe |
+|-------|---------|------------------|
+| 🔥 **Act Now** | Severity demands action regardless of effort | This week to this month |
+| ⚡ **Quick Win** | High value relative to effort — do these early for fast program improvement | This quarter |
+| 📋 **Plan & Resource** | Significant risk but effort requires planning; put in next quarter's plan | Next quarter |
+| ⏳ **Defer** | Low enough risk or high enough effort that deferral is defensible with monitoring | Annual review |
 
 ---
 
@@ -180,15 +219,15 @@ last_reviewed: YYYY-MM-DD
 
 ## Full Register
 
-| ID | Domain | Risk Title | L | I | Score | Level | Controls | Residual | Owner | Status |
-|----|--------|-----------|---|---|-------|-------|---------|---------|-------|--------|
-| RISK-001 | REG | [title] | 3 | 4 | 12 | 🟠 High | Adequate | 🟡 Med | VP Compliance | In Progress |
+| ID | Domain | Risk Title | L | I | Score | Level | Effort | Priority | Owner | Status |
+|----|--------|-----------|---|---|-------|-------|--------|----------|-------|--------|
+| RISK-001 | REG | [title] | 3 | 4 | 12 | 🟠 High | Medium | ⚡ Quick Win | VP Compliance | In Progress |
 ...
 
 ## Risks Requiring Immediate Attention
 
-| ID | Risk | Score | Treatment Due | Days Overdue |
-|----|------|-------|--------------|-------------|
+| ID | Risk | Score | Priority | Treatment Due | Days Overdue |
+|----|------|-------|----------|--------------|-------------|
 ```
 
 Flag:
@@ -196,6 +235,7 @@ Flag:
 - Risks not reviewed in > 6 months
 - Risks with treatment past due date
 - Risks where treatment_status is "Not Started" and score ≥ 12
+- Risks missing `effort_to_remediate` — prompt to rate them
 
 ---
 
@@ -218,10 +258,13 @@ For each risk in the register:
 
 1. Read the risk description and regulatory basis
 2. Apply the likelihood and impact scales (reason through each explicitly)
-3. Present the scored register sorted by risk_score descending
-4. Flag any risk where the score changed significantly since last rating
-5. Ask: "Do any of these ratings look off to you?"
-6. Write updated ratings back to the register
+3. Apply the effort-to-remediate scale — reason through: what is the most realistic treatment path? Who owns it? Are there external dependencies? How long has similar work taken at this institution?
+4. Derive the priority index from the risk level + effort matrix
+5. Present the scored register sorted by priority_index first (🔥 Act Now → ⚡ Quick Win → 📋 Plan → ⏳ Defer), then by risk_score descending within each tier
+6. Flag any risk where the score changed significantly since last rating
+7. Flag any risk missing an effort rating
+8. Ask: "Do any of these ratings or effort assessments look off to you?"
+9. Write updated ratings back to the register
 
 ---
 
@@ -349,14 +392,89 @@ period: <quarter or annual>
 
 ---
 
+### Mode: `prioritize` — Effort-Adjusted Priority Stack
+
+The VP's "what to work on first" view. Unlike the risk register sorted by score, this sorts by the priority index — combining severity with effort so the register reflects what is actually worth doing *now* versus what needs planning or resourcing.
+
+```markdown
+---
+title: Risk Priority Stack
+date: YYYY-MM-DD
+---
+
+# Compliance Risk Priority Stack
+## [Date] — Sorted by Priority Index
+
+---
+
+## 🔥 Act Now
+*High severity AND/OR low effort makes these non-negotiable this quarter.*
+
+| ID | Risk | Domain | Score | Effort | Why Now | Treatment Status | Owner |
+|----|------|--------|-------|--------|---------|-----------------|-------|
+| RISK-NNN | [title] | [domain] | N | Low/Med/High | [one-line rationale] | [status] | [owner] |
+...
+
+**This week's top pick**: RISK-NNN — [title]
+*[One sentence: the single most actionable risk the VP should personally push this week, considering score, effort, and current treatment status.]*
+
+---
+
+## ⚡ Quick Wins
+*Medium-high severity with low effort — maximize program improvement per hour invested.*
+
+| ID | Risk | Domain | Score | Effort | Specific Action | Timeline | Owner |
+|----|------|--------|-------|--------|----------------|---------|-------|
+| RISK-NNN | [title] | [domain] | N | Low | [what specifically to do] | [days] | [owner] |
+...
+
+**Total quick-win potential**: [N] risks that could be substantially closed in the next 30 days with focused effort.
+
+---
+
+## 📋 Plan & Resource
+*High severity but significant effort — these need to be in next quarter's plan with assigned resources.*
+
+| ID | Risk | Domain | Score | Effort | What's Blocking Faster Progress | Needed Resource |
+|----|------|--------|-------|--------|---------------------------------|----------------|
+| RISK-NNN | [title] | [domain] | N | High | [barrier] | [what's needed] |
+...
+
+---
+
+## ⏳ Defer
+*Low severity or very high effort relative to risk level — monitor but don't prioritize resources.*
+
+| ID | Risk | Domain | Score | Effort | Next Review |
+|----|------|--------|-------|--------|------------|
+| RISK-NNN | [title] | [domain] | N | High | YYYY-MM-DD |
+...
+
+---
+
+## Priority Summary
+
+| Priority | Count | This Quarter's Focus |
+|----------|-------|---------------------|
+| 🔥 Act Now | N | [brief description of the theme] |
+| ⚡ Quick Wins | N | [brief description] |
+| 📋 Plan & Resource | N | [brief description] |
+| ⏳ Defer | N | Accept with monitoring |
+
+**Risks missing effort rating**: [N] — run `/compliance-brain:risk all rate` to complete the assessment.
+```
+
+---
+
 ## Step 4: Offer follow-up actions
 
 After producing output, offer:
 1. **Save register** — write/update `wiki/compliance/risk-register.md`
-2. **Create treatment tasks** — add all High/Critical treatment actions to `planner/tasks.md` with due dates and owners
+2. **Create treatment tasks** — add all 🔥 Act Now and ⚡ Quick Win treatment actions to `planner/tasks.md` with due dates and owners
 3. **Board report** — run `/compliance-brain:board-report` to package this risk summary into a board compliance report
 4. **Domain drill-down** — for any domain with multiple High/Critical risks, offer to run the domain skill in `gap` mode for a deeper look
 5. **Calendar** — schedule the next quarterly risk review in `/compliance-brain:calendar`
+6. **Scan integration** — run `/compliance-brain:scan full` to see how the risk register fits into the full program picture
 
 ---
 
@@ -368,3 +486,6 @@ After producing output, offer:
 - **"Accepted" is a legitimate treatment status** — for Low and some Medium risks, formal acceptance with documentation is appropriate and more honest than a treatment plan no one will implement.
 - **Risk owners must be roles, not individuals** — people change roles; the risk register must survive those transitions.
 - **Regulatory changes automatically reopen risks** — when `/compliance-brain:reg-monitor` identifies a new or changed requirement, check whether it creates or modifies any existing risk register entries.
+- **Effort ratings unlock the priority index** — a risk register without `effort_to_remediate` fields is sorted by severity alone, which tells the VP what's most dangerous but not what's most actionable. Complete effort ratings before presenting the register to leadership.
+- **Quick wins compound** — closing three Medium/Low-effort risks builds program credibility, frees capacity, and often reduces the severity of higher-scoring risks. The `prioritize` mode surfaces these explicitly; don't skip them in favor of only chasing the highest scores.
+- **Act Now does not mean Act Alone** — 🔥 Act Now items with High effort need resourcing, not just urgency. Escalate these to leadership with a specific resource ask, not just a flag.

@@ -70,11 +70,12 @@ Before generating the daily plan, build a **picture of the day** by combining Br
 
 Then check today's day of the week for additional maintenance:
 
-**If Monday** (after sync): Invoke `/compliance-brain:lint`, then `/compliance-brain:plot`.
-1. **`/compliance-brain:lint`**: Perform the full lint health check (index integrity, orphans, broken anchors, stale content, overdue action items, cross-brain gaps, archive candidates). Apply auto-fixes. Resolve any errors before proceeding. Carry unresolved issues forward as tasks.
-2. **`/compliance-brain:plot`**: Generate or update planner daily files for the full Mon–Fri work week. Synthesizes Brain knowledge (project state, action items, tasks, entity context) with live connector data (calendar, Jira, Teams, email). Distributes tasks across the week, maps meetings to projects, flags dependencies.
-3. Then proceed with regular `/compliance-brain:myday` steps (Step 4 onward) for today.
-4. Note in the briefing: "🔄 Sync ran. 🔧 Lint ran — N issues, N fixed. 📅 Week plotted (Mon–Fri)."
+**If Monday** (after sync): Invoke `/compliance-brain:scan`, then `/compliance-brain:lint`, then `/compliance-brain:plot`.
+1. **`/compliance-brain:scan quick`**: Run a quick-mode proactive gap scan across the full compliance program. Surface any new or worsening items since last week. Insert the scan's "Program Signal" and top 3 alerts into the Monday briefing under a "⚠️ Program Alerts" section. Save the scan record.
+2. **`/compliance-brain:lint`**: Perform the full lint health check (index integrity, orphans, broken anchors, stale content, overdue action items, cross-brain gaps, archive candidates). Apply auto-fixes. Resolve any errors before proceeding. Carry unresolved issues forward as tasks.
+3. **`/compliance-brain:plot`**: Generate or update planner daily files for the full Mon–Fri work week. Synthesizes Brain knowledge (project state, action items, tasks, entity context) with live connector data (calendar, Jira, Teams, email). Distributes tasks across the week, maps meetings to projects, flags dependencies.
+4. Then proceed with regular `/compliance-brain:myday` steps (Step 4 onward) for today.
+5. Note in the briefing: "🔄 Sync ran. 🔍 Scan ran — [program signal]. 🔧 Lint ran — N issues, N fixed. 📅 Week plotted (Mon–Fri)."
 
 **If Tuesday–Thursday** (after sync): No extra steps.
 - Proceed directly with regular `/compliance-brain:myday` steps (Step 4 onward).
@@ -88,7 +89,7 @@ Then check today's day of the week for additional maintenance:
 
 | Day | Order |
 |-----|-------|
-| Monday | /compliance-brain:sync → /compliance-brain:lint → /compliance-brain:plot → /compliance-brain:myday |
+| Monday | /compliance-brain:sync → /compliance-brain:scan → /compliance-brain:lint → /compliance-brain:plot → /compliance-brain:myday |
 | Tue–Thu | /compliance-brain:sync → /compliance-brain:myday |
 | Friday | /compliance-brain:sync → /compliance-brain:myday → /compliance-brain:reflect |
 
@@ -133,7 +134,7 @@ Meetings: N. Active tasks: N. Priorities: [top 3].
 
 ### Step 7: Present
 
-Output the daily briefing to the user. Highlight:
+Output the daily briefing to the user. Make it super impactful, brief, and focused. Highlight:
 - What needs prep before meetings
 - What's most urgent
 - Any flags from yesterday (unfinished tasks, follow-ups)

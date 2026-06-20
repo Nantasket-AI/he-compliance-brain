@@ -28,6 +28,8 @@ From the user's input, determine:
   - `projects` — active compliance projects only
   - `accreditation` — accreditation cycles and milestones only (LCME, MSCHE, ACGME, TJC)
   - `regulatory` — regulatory deadlines and submission cycles only
+  - `goals` — compliance program goals with target dates only
+  - `marketing` — upcoming communications and board report deadlines only
   - `all` — everything
 
 ---

@@ -147,12 +147,19 @@ The `/compliance-brain:lint` skill enforces this rule and will flag violations.
 | `/compliance-brain:counsel` | Legal research library — files and retrieves legal memos, regulatory interpretations, resolution agreements, outside counsel correspondence. Manages external legal matters (OCR complaints, DOJ inquiries). Modes: file, search, brief, index, matter |
 | `/compliance-brain:intel` | Regulatory and peer intelligence feed — curated clipping library of enforcement actions, regulatory developments, and peer institution news. Produces pattern-based alerts and weekly digests. Modes: file, search, feed, alert, digest |
 
+### Proactive Intelligence
+
+| Command | Description |
+|---------|-------------|
+| `/compliance-brain:scan` | Proactive weekly gap scan — sweeps all domains, surfaces only what is new or worsening since last scan, produces a ranked priority list with quick wins. Runs automatically on Mondays via myday |
+| `/compliance-brain:delta` | Change detection — compares current Brain state against prior scan snapshots to show what moved (risks up/down, deadlines slipped, projects changed status). Modes: compare, trend, snapshot |
+
 ### Compliance Workflows
 
 | Command | Description |
 |---------|-------------|
 | `/compliance-brain:compliance` | General regulatory compliance research — brief, gap, remediate, wiki modes |
-| `/compliance-brain:risk` | Compliance risk register — build, rate, treat, and report. Modes: register, update, rate, treat, report, heat-map |
+| `/compliance-brain:risk` | Compliance risk register — build, rate (with effort scoring), treat, and report. Priority index (🔥 Act Now / ⚡ Quick Win / 📋 Plan / ⏳ Defer) derived from severity × effort. Modes: register, update, rate, treat, report, heat-map, prioritize |
 | `/compliance-brain:reg-monitor` | Regulatory intelligence — scan, brief, action, horizon modes. Fetches from authoritative agency sources |
 | `/compliance-brain:audit` | External audit response — corrective action plans, status tracking, escalation, board brief |
 | `/compliance-brain:policy` | Policy registry — inventory, gaps, overdue policies, policy maps, draft new policies |
@@ -179,7 +186,7 @@ The `/compliance-brain:lint` skill enforces this rule and will flag violations.
 
 Some skills call others in sequence:
 
-- **`/compliance-brain:myday`** calls `sync` (daily), `lint` (Monday), `plot` (Monday), `reflect` (Friday), and `remind digest` (daily)
+- **`/compliance-brain:myday`** calls `sync` (daily), `scan quick` (Monday), `lint` (Monday), `plot` (Monday), `reflect` (Friday), and `remind digest` (daily)
 - **`/compliance-brain:dashboard`** delegates to `risk`, `calendar`, `training`, and `project` for focused modes
 - **`/compliance-brain:board-report`** aggregates output from `risk`, `reg-monitor`, `audit`, `training`, and `calendar`
 - **`/compliance-brain:risk`** sources risks from all domain skills run in `gap` mode
